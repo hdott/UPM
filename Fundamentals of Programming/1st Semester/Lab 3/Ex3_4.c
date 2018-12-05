@@ -1,5 +1,7 @@
 /*
-Se  citesc de la tastatură un număr întreg(int) și un număr real(double) (n1 și n2). Citirea și afișarea valorilor numerice se va realiza prin afișarea în prealabil al unui mesaj corespunzător. Se cere să se afișeze: 
+Se  citesc de la tastatură un număr întreg(int) și un număr real(double) (n1 și n2).
+Citirea și afișarea valorilor numerice se va realiza prin afișarea în prealabil al unui mesaj corespunzător.
+Se cere să se afișeze: 
 - Valorea de adevăr pentru: 
 	#Negat(n1 este egal cu 2) 
 	#N2 este diferit de 5 
