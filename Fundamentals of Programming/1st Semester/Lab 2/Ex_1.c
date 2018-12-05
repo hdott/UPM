@@ -3,7 +3,7 @@
 
 int main()
 {
-	char a;
+    char a;
     unsigned char b;
     short int c;
     int d;
