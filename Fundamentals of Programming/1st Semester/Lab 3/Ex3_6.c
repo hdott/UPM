@@ -40,7 +40,7 @@ void main()
         printf("f = "), scanf("%d", &f);
     printf("\n");
 
-    printf("P(15) = %lld\n", P(15));
-    printf("P(20) = %lld\n", P(20));
+    printf("P(15)\t  = %lld\n", P(15));
+    printf("P(20)\t  = %lld\n", P(20));
     printf("P(2)^P(3) = %lld\n", power(P(2),P(3)));
 }
