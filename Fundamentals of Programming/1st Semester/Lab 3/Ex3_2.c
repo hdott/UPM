@@ -38,14 +38,6 @@ int post_increment(int x)
     return aux_x++;
 }
 
-void subpoint_2(int x, char s)
-{
-    printf("[%c + 10] = %d\n", s, x+10);
-    printf("[%c - 10] = %d\n", s, x-10);
-    printf("[%c * 10] = %d\n", s, x*10);
-    printf("[%c / 10] = %d\n", s, x/10);
-}
-
 int power(int x, int y)
 {
     int pow_x = 1;
@@ -72,8 +64,11 @@ void main()
     next;
 
     printf(" ~~Subpoint 2~~\n\n");
-        subpoint_2(a, 'a'), next;
-        subpoint_2(b, 'b'), next;
+        printf("[a + 10] = %d\t[b + 10] = %d\n", a+10, b+10);
+        printf("[a - 10] = %d\t[b - 10] = %d\n", a-10, b-10);
+        printf("[a * 10] = %d\t[b * 10] = %d\n", a*10, b*10);
+        printf("[a / 10] = %d\t[b / 10] = %d\n", a/10, b/10);
+    next;
 
     printf(" ~~Subpoint 3~~\n\n");
         printf("[a / b] = %d\t[a % b] = %d\n", a/b, a%b);
