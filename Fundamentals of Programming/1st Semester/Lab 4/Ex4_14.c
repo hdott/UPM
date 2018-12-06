@@ -22,8 +22,8 @@ void ghiceste(int x)
             semn = getchar(), system("clear");
 
         if(semn == '<')
-            max = (min+max)/2 - 1;  // daca x != (min+max)/2 scadem 1 pentru a nu fi
-                                    // luat in considerare cand trecem in prima jumatate
+            max = (min+max)/2 - 1;  // daca x != (min+max)/2 scadem 1 pentru a nu mai fi luat
+                                    // in considerare a doua oara cand trecem in prima jumatate
         else if(semn == '>')
             min = (min+max)/2 + 1;  // la fel ca mai sus cand trecem in a doua jumatate
 
