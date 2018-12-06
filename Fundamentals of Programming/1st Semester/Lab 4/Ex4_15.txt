@@ -1,0 +1,23 @@
+#define max_ora 24
+#define max_m_s 60
+
+Macroul:
+#define incrementeaza(x,y,max) x >= max ? (y = y + x/max) && (x = x%max) : (x = x)
+
+  preia doua variabile din timp consecutive si le modifica cat sa ramana in limitele respective
+  in cazul in care prima variabila este mai mare decat maximul corespunzator
+ex:
+  x = secunde && y = minute
+  daca x e mai mare sau egal de 60
+    macroul va creste y cu (x / 60) 
+      x/60 --> reprezentand minutele extra rezultate
+    si x preia restul de secunde rezultat din (x % 60)
+
+
+   secunda = secunda + N;
+   incrementeaza(secunda, minut, max_m_s);  //in caz de secunde >= 60 modifica
+   incrementeaza(minut, ora, max_m_s);      //in caz de minute >= 60 modifica
+   incrementeaza(ora, zi, max_ora);         //in caz de ore >= 24 modifica
+   
+Pentru a putea modifica timpul, initial se creste numarul de secunde cu numarul introdus (N)
+  apoi se repeta macroul pentru fiecare variabila secunda/minut/ora.
