@@ -23,7 +23,7 @@ int minim(int x, int y, int z, int u, int w)
     aux1 = min(x,y);
     aux2 = min(z,u);
     aux3 = min(aux1,aux2);
-    
+
     return min(aux3,w);
 }
 
@@ -38,6 +38,6 @@ void main()
         printf("n4 = "), scanf("%d", &n4);
         printf("n5 = "), scanf("%d", &n5);
 
-    printf("\nValoarea maxima este: %d\n", maxim(n1,n2,n3,n4,n5));
-    printf("Valoarea minima: %d\n", minim(n1,n2,n3,n4,n5));
+    printf("\nValoarea maxima este:\t%d\n", maxim(n1,n2,n3,n4,n5));
+    printf("Valoarea minima:\t%d\n", minim(n1,n2,n3,n4,n5));
 }
