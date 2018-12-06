@@ -12,6 +12,7 @@ void main()
         printf("%6c\t\t%4d\n", 'a', 'a');
         printf("%6c\t\t%4d\n", 'A', 'A');
         printf("%6c\t\t%5d\n", 'z', 'z');
+        printf("%6c\t\t%4d\n", 'Z', 'Z');
         printf("%6c\t\t%4d\n", '0', '0');
         printf("%6c\t\t%4d\n", '9', '9');
         printf("%6c\t\t%4d\n", '.', '.');
