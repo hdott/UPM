@@ -6,10 +6,15 @@ Utilzatorul va da următoare indicații programului mai mare ( > ), mai mic ( < 
 #include <stdio.h>
 #include <stdlib.h>
 
+// functia intreaba daca numarul este mai mare sau mai mic decat
+// numarul aflat la jumatatea multimii
+// apoi imparte multimea in 2 jumatati
+// si reia verificarea trecand in jumatatea in care se afla numarul
+// cat timp numarul introdus difera de numarul aflat la jumatatea multimii
 void ghiceste(int x)
 {
     int min = 1, max = 100, semn, counter = 0;
-    
+
     while(x != (min+max)/2)
     {   
         getchar(); //captureaza enterul din introducerea numarului/caracterului
@@ -17,9 +22,10 @@ void ghiceste(int x)
             semn = getchar(), system("clear");
 
         if(semn == '<')
-            max = (min+max)/2 - 1;
+            max = (min+max)/2 - 1;  // daca x != (min+max)/2 scadem 1 pentru a nu fi
+                                    // luat in considerare cand trecem in prima jumatate
         else if(semn == '>')
-            min = (min+max)/2 + 1;   
+            min = (min+max)/2 + 1;  // la fel ca mai sus cand trecem in a doua jumatate
 
         ++counter;
     }
