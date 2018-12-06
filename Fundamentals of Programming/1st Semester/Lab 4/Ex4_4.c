@@ -59,33 +59,33 @@ int minim(int x, int y, int z)
 void ec_gr_2(int x, int y, int z)
 {
     double D, x1, x2, Re, Im;
-	printf("Ecuatia este (%d)*x^2 + (%d)*x + (%d) = 0\n\n", x, y, z);
+    printf("Ecuatia este (%d)*x^2 + (%d)*x + (%d) = 0\n\n", x, y, z);
 
-	D = pow(y,2) - (4 * x * z);
+    D = pow(y,2) - (4 * x * z);
 
-	if(D > 0)
-	{
-		x1 = (-y + sqrt(D)) / (2 * x);
-		x2 = (-y - sqrt(D)) / (2 * x);
-		printf("Solutiile ecuatiei sunt:\nx1 = %lf\nx2 = %lf\n", x1, x2);
-	}
-	else if(D == 0)
-	{
-		x1 = x2 = (-y) / (2 * x);
-		printf("Solutiile ecuatiei sunt egale:\n x1 = x2 = %lf\n", x1);
-	}
-	else
-	{
-		printf("Solutiile ecuatiei nu sunt reale.\n");
-		Re = (-y) / (2 * x);
-		Im = sqrt(-D) / (2 * x);
-		printf("Partea Reala este:\tRe = %lf\n", Re);
-		printf("Partea Imaginara este:\tIm = %lf\n\n", Im);
-			
-		printf("Solutiile complexe sunt: \n");
-		printf("x1 = %lf + %lf*i\n", Re, Im);
-		printf("x2 = %lf - %lf*i\n", Re, Im);
-	}
+    if(D > 0)
+    {
+        x1 = (-y + sqrt(D)) / (2 * x);
+        x2 = (-y - sqrt(D)) / (2 * x);
+        printf("Solutiile ecuatiei sunt:\nx1 = %lf\nx2 = %lf\n", x1, x2);
+    }
+    else if(D == 0)
+    {
+	    x1 = x2 = (-y) / (2 * x);
+	    printf("Solutiile ecuatiei sunt egale:\n x1 = x2 = %lf\n", x1);
+    }
+    else
+    {
+	    printf("Solutiile ecuatiei nu sunt reale.\n");
+	    Re = (-y) / (2 * x);
+	    Im = sqrt(-D) / (2 * x);
+	    printf("Partea Reala este:\tRe = %lf\n", Re);
+	    printf("Partea Imaginara este:\tIm = %lf\n\n", Im);
+    
+	    printf("Solutiile complexe sunt: \n");
+	    printf("x1 = %lf + %lf*i\n", Re, Im);
+	    printf("x2 = %lf - %lf*i\n", Re, Im);
+    }
 }
 
 void main()
