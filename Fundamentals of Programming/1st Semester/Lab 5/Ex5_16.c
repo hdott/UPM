@@ -21,6 +21,6 @@ void main()
     printf("Introduceti un numar natural pentru a fi transformat in baza.2:\n");
         printf("nr = "), scanf("%d", &nr);
 
-    printf("\nNumarul %d in baza 2 este:\n", nr);
+    printf("\nNumarul %d in baza.2 (de la stanga la dreapta) este:\n", nr);
         print_baza2(nr);
 }
