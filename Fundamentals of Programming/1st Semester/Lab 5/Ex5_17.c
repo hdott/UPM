@@ -23,7 +23,6 @@ int baza2_to_baza10(int x)
     }
 
     return rezultat;
-
 }
 
 void main()
