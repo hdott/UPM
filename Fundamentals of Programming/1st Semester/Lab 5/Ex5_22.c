@@ -31,31 +31,31 @@ void heap_permutation_4()
     printf("%d%d%d%d\n", n1,n2,n3,n4);
     for(int i = 1; i < factorial(4); ++i)
     {
-        if(i%2 != 0)
+        if(i%2 != 0)                    //conditia_1
         {
             int aux = n1;
             n1 = n2;
             n2 = aux;
         }
-        else if(i%2 == 0 && i%6 != 0)
+        else if(i%2 == 0 && i%6 != 0)   //conditia_2
         {
             int aux = n1;
             n1 = n3;
             n3 = aux;
         }
-        else if(i/6 == 1 && i%6 == 0)
+        else if(i/6 == 1 && i%6 == 0)   //conditia_3
         {
             int aux = n1;
             n1 = n4;
             n4 = aux;
         }
-        else if(i/6 == 2 && i%6 == 0)
+        else if(i/6 == 2 && i%6 == 0)   //conditia_4
         {
             int aux = n2;
             n2 = n4;
             n4 = aux;
         }
-        else if(i/6 == 3 && i%6 == 0)
+        else if(i/6 == 3 && i%6 == 0)   //conditia_5
         {
             int aux = n3;
             n3 = n4;
