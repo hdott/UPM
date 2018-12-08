@@ -55,13 +55,13 @@ void reuniune(int V1[], int V2[], int elem1, int elem2)
     int check_bool[elem_bool], reuniune[MAX], counter=0;
         set_vector_to_0(check_bool,elem_bool);
     
-    for(int i = 0; i < elem1; ++i)
-        if(!check_bool[V1[i]])
-        {
+    for(int i = 0; i < elem1; ++i)                  //transforma check[element] in 1 cand intalneste un element
+        if(!check_bool[V1[i]])                      //nou si salveaza elementul in reuniune[]
+        {                                           //daca elementul e gasit a doua oara nu este salvat in reuniune[]
             check_bool[V1[i]] = 1;
             reuniune[counter] = V1[i], ++counter;
         }
-    for(int i = 0; i < elem2; ++i)
+    for(int i = 0; i < elem2; ++i)                  //idem pentru multimea 2
         if(!check_bool[V2[i]])
         {
             check_bool[V2[i]] = 1;
@@ -78,11 +78,11 @@ void intersectie(int V1[], int V2[], int elem1, int elem2)
     int check_bool[elem_bool], intersectie[MAX], counter=0;
         set_vector_to_0(check_bool,elem_bool);
     
-    for(int i = 0; i < elem1; ++i)
+    for(int i = 0; i < elem1; ++i)          //transforma check[element] in 1 cand intalneste un element nou
         if(!check_bool[V1[i]])
             check_bool[V1[i]] = 1;
-    for(int i = 0; i < elem2; ++i)
-        if(check_bool[V2[i]])
+    for(int i = 0; i < elem2; ++i)          //daca check[element] e 1 cand intalneste un element din multimea 2
+        if(check_bool[V2[i]])               //il salveaza in intersectie[]
             intersectie[counter] = V2[i], ++counter;
 
     print_vector(intersectie,counter,"Intersectie(A,B)");
@@ -92,17 +92,17 @@ void diferenta(int V1[], int V2[], int elem1, int elem2)
 {
     int max1=maxim(V1,elem1), max2=maxim(V2,elem2);
     int elem_bool = max(max1,max2)+1;
-    int check_bool[elem_bool], intersectie[MAX], counter=0;
+    int check_bool[elem_bool], diferenta[MAX], counter=0;
         set_vector_to_0(check_bool,elem_bool);
     
-    for(int i = 0; i < elem2; ++i)
+    for(int i = 0; i < elem2; ++i)          //transforma check[element] in 1 cand intalneste un element nou din multimea 2
         if(!check_bool[V2[i]])
             check_bool[V2[i]] = 1;
-    for(int i = 0; i < elem1; ++i)
-        if(!check_bool[V1[i]])
-            intersectie[counter] = V1[i], ++counter;
+    for(int i = 0; i < elem1; ++i)          //daca check[element] e 0 cand intalneste un element din multimea 1
+        if(!check_bool[V1[i]])              //inseamna ca acesta nu se afla in multimea 1 si e salvat in difierenta[]
+            diferenta[counter] = V1[i], ++counter;
 
-    print_vector(intersectie,counter,"Diferenta(A,B)\t");
+    print_vector(diferenta,counter,"Diferenta(A,B)\t");
 }
 
 void main()
