@@ -44,7 +44,7 @@ void transforma_multime(int V[], int elem)
 {
     int elem_bool = maxim(V,elem)+1; 
     int check_bool[elem_bool], multime[MAX], counter=0;
-    set_vector_to_0(check_bool,elem_bool);
+        set_vector_to_0(check_bool,elem_bool);
 
     for(int i = 0; i < elem; ++i)
         if(!check_bool[V[i]])
