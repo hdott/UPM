@@ -1,7 +1,7 @@
 /*
 Fie două matrici (de nxm) date de la tastatură. 
 Să se calculeze suma.
-Pentru a putea calcula 2 matrici, ambele trebuie sa aibe acelasi nr de randuri si coloane.
+Pentru a putea aduna 2 matrici, ambele trebuie sa aibe acelasi nr de randuri si coloane.
 */
 
 #include <stdio.h>
