@@ -45,13 +45,6 @@ void print_matrix(int M[][MAX], int row, int col, char s[])
     }
 }
 
-void set_matrix_to_0(int M[][MAX], int row, int col)
-{
-    for(int i = 0; i < row; ++i)
-        for(int j = 0; j < col; ++j)
-            M[i][j] = 0;
-}
-
 int elimina_row(int M[][MAX], int row, int col, int row1)
 {
     for(int i = 0; i < row; ++i)
@@ -80,7 +73,7 @@ void main()
     col = read_col("A");
     read_matrix(M1,row,col);
 
-    int M2[row][col], del_row, del_col;
+    int del_row, del_col;
     printf("Introdu randul si coloana dorite a fi eliminate:\n");
         printf("row.A = "), scanf("%d", &del_row);
         printf("col.A = "), scanf("%d", &del_col), system("clear");
