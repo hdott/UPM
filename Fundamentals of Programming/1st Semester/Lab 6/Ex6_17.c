@@ -65,30 +65,6 @@ void print_from_diagonala_secundara(int M[][MAX], int row, int col)
     printf("\n");
 }
 
-int check_limit_i(int i, int j, int row, int col)
-{
-    if(j >= col-1 && i < row)
-        i += 2;
-    else if(i < 0)
-        i = 0;
-    else if(i >= row)
-        i = row-1;
-    
-    return i;
-}
-
-int check_limit_j(int i, int j, int row, int col)
-{
-    if(i >= row-1 && j < col)
-        j += 2;
-    else if(j < 0)
-        j = 0;
-    else if(j >= col)
-        j = col-1;
-    
-    return j;
-}
-
 void print_zig_zag(int M[][MAX], int row, int col)
 {
     printf("Afiseaza Matricea in Zig Zag:\n");
@@ -115,10 +91,10 @@ void print_zig_zag(int M[][MAX], int row, int col)
 void print_spirala(int M[][MAX], int row, int col)
 {
     printf("Afiseaza Matricea in Spirala:\n");
-    int i_jos=0, j_jos=0, repetitii=row+1, conditie=0;
+    int i_jos=0, j_jos=0, repetitii=row, conditie=0;
     for( ; j_jos < col; ++j_jos)
         printf("%2d ", M[i_jos][j_jos]);
-        
+
     int i_stanga,j_stanga,i_sus,j_sus,i_dreapta,j_dreapta;
     i_stanga = row;
     j_stanga = col-1;
@@ -135,28 +111,28 @@ void print_spirala(int M[][MAX], int row, int col)
         if(conditie == 0)
         {
             ++i_jos,--j_jos;
-            for(int jos=1, i=i_jos, j=j_jos; jos<repetitii; ++jos && ++i)
+            for(int jos=1, i=i_jos, j=j_jos; jos<=repetitii; ++jos && ++i)
                 printf("%2d ", M[i][j]);
             ++conditie;
         }
         else if(conditie == 1)
         {
             --i_stanga,--j_stanga;
-            for(int stanga=1, i=i_stanga, j=j_stanga; stanga<repetitii; ++stanga && --j)
+            for(int stanga=1, i=i_stanga, j=j_stanga; stanga<=repetitii; ++stanga && --j)
                 printf("%2d ", M[i][j]);
             ++conditie;
         }
         else if(conditie == 2)
         {
             --i_sus,++j_sus;
-            for(int sus=1, i=i_sus, j=j_sus; sus<repetitii; ++sus && --i)
+            for(int sus=1, i=i_sus, j=j_sus; sus<=repetitii; ++sus && --i)
                 printf("%2d ", M[i][j]);
             ++conditie;
         }
         else if(conditie == 3)
         {
             ++i_dreapta,++j_dreapta;
-            for(int dreapta=1, i=i_dreapta, j=j_dreapta; dreapta<repetitii; ++dreapta && ++j)
+            for(int dreapta=1, i=i_dreapta, j=j_dreapta; dreapta<=repetitii; ++dreapta && ++j)
                 printf("%2d ", M[i][j]);
             conditie = 0;
         }
