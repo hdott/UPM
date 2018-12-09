@@ -67,19 +67,19 @@ int elimina_col(int M[][MAX], int row, int col, int col1)
 
 void main()
 {
-    int M1[MAX][MAX], row, col;
+    int M[MAX][MAX], row, col;
 
     row = read_row("A");
     col = read_col("A");
-    read_matrix(M1,row,col);
+    read_matrix(M,row,col);
 
     int del_row, del_col;
     printf("Introdu randul si coloana dorite a fi eliminate:\n");
         printf("row.A = "), scanf("%d", &del_row);
         printf("col.A = "), scanf("%d", &del_col), system("clear");
 
-    print_matrix(M1,row,col,"A Initial"),printf("\n");
-    row = elimina_row(M1,row,col,del_row);
-    col = elimina_col(M1,row,col,del_col);
-    print_matrix(M1,row,col,"A Modificata");
+    print_matrix(M,row,col,"A Initial"),printf("\n");
+    row = elimina_row(M,row,col,del_row);
+    col = elimina_col(M,row,col,del_col);
+    print_matrix(M,row,col,"A Modificata");
 }
