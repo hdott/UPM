@@ -101,13 +101,13 @@ void print_spirala(int M[][MAX], int row, int col)
             for(directie=1, ++i, --j, --repetitii; directie <= repetitii; ++directie)
                 printf("%2d ", M[i++][j]);
         else if(conditie%4 == 2)        //stanga
-            for(directie=1, --i, --j; directie <= repetitii; ++directie)
+            for(directie=1, --i, --j             ; directie <= repetitii; ++directie)
                 printf("%2d ", M[i][j--]);
         else if(conditie%4 == 3)        //sus
             for(directie=1, --i, ++j, --repetitii; directie <= repetitii; ++ directie)
                 printf("%2d ", M[i--][j]);
         else                            //dreapta
-            for(directie=1, ++i, ++j; directie <= repetitii; ++directie)
+            for(directie=1, ++i, ++j             ; directie <= repetitii; ++directie)
                 printf("%2d ", M[i][j++]);
     }
     printf("\n");
