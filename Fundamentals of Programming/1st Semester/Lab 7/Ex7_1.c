@@ -126,11 +126,9 @@ void permutare_dreapta(int V[], int elem)
 void main()
 {
     int elemente;
-
     read_size(&elemente);
 
     int *V = (int*) malloc(elemente*sizeof(int));
-
     read_vector(V,elemente,"Sirului");
 
     print_vector(V,elemente,"Sirul initial"), printf("\n");    
