@@ -91,7 +91,7 @@ void intersectie(int V1[], int V2[], int elem1, int elem2)
 void diferenta(int V1[], int V2[], int elem1, int elem2)
 {
     int max1=maxim(V1,elem1), max2=maxim(V2,elem2);
-    int elem_bool = max(max1,max2)+1;
+    int elem_bool = (max(max1,max2))+1;
     int check_bool[elem_bool], diferenta[MAX], counter=0;
         set_vector_to_0(check_bool,elem_bool);
     
