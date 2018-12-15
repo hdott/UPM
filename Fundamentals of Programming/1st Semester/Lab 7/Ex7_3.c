@@ -30,7 +30,7 @@ void print_vector(int V[], int elem, char s[])
 
 void check_if_present(int V[], int elem, int x)
 {
-    int *V1=NULL, *size=NULL, elem1=0;
+    int *V1=NULL, elem1=0;
     for(int i = 0; i < elem; ++i)
         if(x == V[i])
         {
