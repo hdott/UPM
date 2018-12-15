@@ -34,7 +34,7 @@ void check_if_present(int V[], int elem, int x)
     for(int i = 0; i < elem; ++i)
         if(x == V[i])
         {
-            V1 = (int*) realloc(V1, elem1+1 * sizeof(int));
+            V1 = (int*) realloc(V1, (elem1+1) * sizeof(int));
             V1[elem1++] = i;
         }
     
