@@ -22,6 +22,7 @@ void setup()
 //  A,B,C,D,E,F,G
 //  9 ,10,11,12
 //  D1,D2,D3,D4
+//  13 - dec
   DDRD = DDRD | B11111100;
   DDRB = B00111111;
   Serial.begin(9600);
