@@ -5,7 +5,8 @@ int obstacle = HIGH;
 void setup()
 {
   pinMode(IRPin,INPUT);
-  pinMode(buzzPin,OUTPUT); 
+  pinMode(buzzPin,OUTPUT);
+  attachInterrupt(IRPin,rutine,FALLING);
 }
 
 void loop()
@@ -14,4 +15,9 @@ void loop()
 
   if(obstacle==LOW)
     tone(buzzPin,1000,2000);
+}
+
+void rutine()
+{
+  tone(buzzPin,1000,2000);
 }
