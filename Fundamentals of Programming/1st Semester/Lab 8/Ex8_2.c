@@ -1,3 +1,8 @@
+/*
+Se citeşte un număr natural pe 8 biţi de la tastatură. 
+Să se afişeze reprezentarea binară a acestuia folosind operatorul de deplasare.
+*/
+
 #include <stdio.h>
 
 void print_binar(__uint8_t x)
