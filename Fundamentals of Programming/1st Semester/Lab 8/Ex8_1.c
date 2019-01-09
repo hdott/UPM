@@ -1,3 +1,11 @@
+/*
+Se citeşte un număr natural pe 8 biţi de la tastatură. Să se afişeze: 
+Valorea bitului al 3-lea (k=3) 
+Valoarea bitului de paritate 
+Numărul rezultat după resetarea (=0) bitului 2 (k=2) 
+Numărul rezultat după setarea bitului 4 (k=4)
+*/
+
 #include <stdio.h>
 
 int valoare_bit(__uint8_t x, int poz)
