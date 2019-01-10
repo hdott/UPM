@@ -5,42 +5,30 @@ Scrieti o functie recursiva, care calculeaza suma elementelor pozitive dintr-un 
 
 #include <stdio.h>
 
-int suma_poz(int vector[], int i, int suma)
+int suma_poz_prod_neg(int vector[], int i, int *suma, long long *prod)
 {
+    printf("[%2d]\t%2d\t%4lld\n",i,*suma,*prod);
     if(i<0)
-        return suma;
+        return 0;
     else if(vector[i]>0)
     {
-        printf("[%2d]\t[%2d]\t%2d\n",i,vector[i],suma);
-        return suma_poz(vector,--i,suma+vector[i]);
+        *suma+=vector[i];
+        return suma_poz_prod_neg(vector,--i,suma,prod);
     }
-    else
-    {
-        printf("[%2d]\t[%2d]\t%2d\n",i,vector[i],suma);
-        return suma_poz(vector,--i,suma);
-    }
-}
-
-long long prod_neg(int vector[], int i, long long prod)
-{
-    if(i<0)
-        return prod;
     else if(vector[i]<0)
     {
-        printf("[%2d]\t[%2d]\t%4lld\n",i,vector[i],prod);
-        return prod_neg(vector,--i,prod*vector[i]);
-    }
-    else
-    {
-        printf("[%2d]\t[%2d]\t%4lld\n",i,vector[i],prod);
-        return prod_neg(vector,--i,prod);
+        *prod*=vector[i];
+        return suma_poz_prod_neg(vector,--i,suma,prod);
     }
 }
 
 void main()
 {
     int x[] = {-1,-2,3,4,-5,6,-7,8,-9};
-    
-    printf("Suma elementelor pozitive este: %d\n\n",suma_poz(x,sizeof(x)/4-1,0));
-    printf("Produsul elementelor negative este: %lld\n",prod_neg(x,sizeof(x)/4-1,1));
+    int suma=0;
+    long long prod=1;
+
+    suma_poz_prod_neg(x,sizeof(x)/4-1,&suma,&prod);
+    printf("suma = %d\n",suma);
+    printf("prod = %lld\n",prod);
 }
