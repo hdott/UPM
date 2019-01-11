@@ -1,4 +1,5 @@
 // Insertion Sort
+// Complexity O(n^2)-O(n)
 
 #include <stdio.h>
 
@@ -10,7 +11,7 @@ void insertion_sort(int vector[], int x)
 
         for(j=i-1;j>=0 && vector[j]>key;--j)
             vector[j+1]=vector[j];
-            
+
         vector[j+1]=key;
     }
 }
