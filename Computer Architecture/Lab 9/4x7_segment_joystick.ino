@@ -1,6 +1,4 @@
-//Afisati un numar (ex. 1234) pe afisajul cu 7 segmente
-//Cititi numere de pe interfata seriala si afisati.
-//  Verificarea interfetei seriale se va efectua dupa 50 de afisari (aproximativ la 1 secunda);
+//Conectati un joystick pe intrarea analogica si afisati valoarea citita de la convertorul analog digita [0,1023].
 
 //A,B,C,D,E,F,G,decimal point work with inverse logic (0 = light ON)
 //D1,D2,D3,D3 work normally (1 = light ON)
@@ -27,7 +25,7 @@ void setup()
 {
   //segment A,B,C,D,E,F,G,D1,D2,D3,D4,dec
   //pins    2,3,4,5,6,7,8, 9,10,11,12,13
-  DDRD = DDRD | B11111110;
+  DDRD = DDRD | B11111100;
   DDRB = B00011111;  
 }
 
