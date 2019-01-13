@@ -1,6 +1,5 @@
-//Afisati un numar (ex. 1234) pe afisajul cu 7 segmente
-//Cititi numere de pe interfata seriala si afisati.
-//  Verificarea interfetei seriale se va efectua dupa 50 de afisari (aproximativ la 1 secunda);
+//Conectat un buton pe o intrare digitala si scrieti un program care numara si afiseaza numarul de apasari distincte
+//  ale butonului.
 
 //A,B,C,D,E,F,G,decimal point work with inverse logic (0 = light ON)
 //D1,D2,D3,D3 work normally (1 = light ON)
