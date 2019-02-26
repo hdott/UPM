@@ -1,0 +1,29 @@
+Permutarea prin algoritmul Heap.
+Documentatie: https://en.wikipedia.org/wiki/Heap%27s_algorithm
+
+ex: 1234
+
+[0]   1234  
+[1]   2134  swap(n1,n2)   //conditia_1
+[2]   3124  swap(n1,n3)   //conditia_2
+[3]   1324  swap(n1,n2)   //conditia_1
+[4]   2314  swap(n1,n3)   //conditia_2
+[5]   3214  swap(n1,n2)   //conditia_1
+[6]   4213  swap(n1,n4)   //conditia_3
+[7]   2413  swap(n1,n2)   //conditia_1
+[8]   1424  swap(n1,n3)   //conditia_2
+[9]   4123  swap(n1,n2)   //conditia_1
+[10]  2143  swap(n1,n3)   //conditia_2
+[11]  1243  swap(n1,n2)   //conditia_1
+[12]  1342  swap(n2,n4)   //conditia_4
+[13]  3142  swap(n1,n2)   //conditia_1
+[14]  4132  swap(n1,n3)   //conditia_2
+[15]  1432  swap(n1,n2)   //conditia_1
+[16]  3412  swap(n1,n3)   //conditia_2
+[17]  4312  swap(n1,n2)   //conditia_1
+[18]  4321  swap(n3,n4)   //conditia_5
+[19]  3421  swap(n1,n2)   //conditia_1
+[20]  2431  swap(n1,n3)   //conditia_2
+[21]  4231  swap(n1,n2)   //conditia_1
+[22]  3241  swap(n1,n3)   //conditia_2
+[23]  2341  swap(n1,n2)   //conditia_1
