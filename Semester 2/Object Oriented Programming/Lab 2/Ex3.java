@@ -4,8 +4,9 @@ public class Ex3
 {
     public static void main(String args[])
     {
-        Masina car = new Masina("SUV","BLUE",170);
+        Masina car = new Masina("SUV","BLUE",170);  // class initialization
 
+        // sa se apeleze metodele clasei
         car.setType("SUV");
         car.setColour("BLUE");
         car.setSpeed(170);
@@ -19,6 +20,7 @@ public class Ex3
         System.out.print("Input a number: ");
             int N = read.nextInt();
 
+        // sa se creeze N instante
         Masina vector[] = new Masina[N];
         for(int i=0; i<N; ++i)
         {
@@ -34,6 +36,7 @@ public class Ex3
         }
         System.out.println("\n");
 
+        // prints all instances
         for(int i=0; i<N; ++i)
             System.out.println(vector[i]);
     }    
