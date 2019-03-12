@@ -10,59 +10,53 @@
 
 int main(void)
 {
-    int maxim, minim, size;
-    char *wordS=NULL, *wordB=NULL, *input=NULL, *point=NULL;
-    
-    input = (char*) malloc(MAX*sizeof(char));
+    int maxim, minim, count=0, size;
+    char *maxWord = (char*) malloc(MAX*sizeof(char));
+    char *minWord = (char*) malloc(MAX*sizeof(char));
+    char *input_string = (char*) malloc(MAX*sizeof(char));
 
     FILE *file = fopen("myfile.txt","r");
-    
-    fscanf(file,"%s",input);
-        maxim = minim = strlen(input);
-        wordB = (char*) malloc((maxim+1)*sizeof(char));
-        wordS = (char*) malloc((minim+1)*sizeof(char));
-        wordB = wordS = input;
-        // fseek(file,strlen(input),SEEK_SET);
-        puts(input);
-    
+    char *pWord;
     if(file)
     {
         while(!feof(file))
         {
-            fscanf(file,"%s",input);
-            size = strlen(input);
+            fscanf(file, "%s", input_string);
 
-            if(size > maxim)
+            pWord = strtok(input_string," ,.!?/");
+            while(pWord != NULL)
             {
-                point = (char*) realloc(wordB,(size+1)*sizeof(char));
-                puts("ERROR1");
-                if(point)
+                size = strlen(pWord);
+
+                if(!count)
                 {
-                    wordB = point;
+                    strcpy(maxWord,pWord);
+                    strcpy(minWord,pWord);
+                    maxim = minim = size;
+                    count=1;
+                }
+                else if(maxim < size)
+                {
+                    strcpy(maxWord,pWord);
                     maxim = size;
-                    wordB = input;
                 }
-            }
-            else if(size < minim)
-            {
-                point = (char*) realloc(wordS,(size+1)*sizeof(char));
-                puts("ERROR2");
-                if(point)
+                else if(minim > size)
                 {
-                    wordS = point;
+                    strcpy(minWord,pWord);
                     minim = size;
-                    wordS = input;
                 }
+
+                pWord = strtok(NULL," ,.!?/");
             }
         }
     }
 
-    printf("Cel mai mare cuvant citit este %s, are %d litere\n", wordB, maxim);
-    printf("Cel mai mic cuvant citit este %s, are %d litere\n", wordS, minim);
+    printf("Cel mai mare cuvant citit este %s, are %d litere\n", maxWord, maxim);
+    printf("Cel mai mic cuvant citit este %s, are %d litere\n", minWord, minim);
     
     fclose(file);
-    free(input);
-    free(wordB);
-    free(wordS);
+    free(input_string);
+    free(maxWord);
+    free(minWord);
     return 0;
 }
