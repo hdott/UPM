@@ -40,25 +40,24 @@ static void InsertElementStart(LIST *newp)
     {
         newp -> next = *tracer;
         (*tracer) -> previous = newp;
+        *tracer = newp;
     }
 }
 
 static void InsertElementEnd(LIST *newp)
 {
-    LIST **tracer =  &head;
+    LIST **tracer =  &tail;
 
     if(!(*tracer))
     {
         *tracer = newp;
-        tail =  newp;
+        head =  newp;
     }
     else
     {
-        while((*tracer) -> next)    tracer = &(*tracer) -> next;
-
         (*tracer) -> next = newp;
         newp -> previous = *tracer;
-        tail = newp;
+        *tracer = newp;
     }
 }
 
@@ -70,6 +69,7 @@ static void EmptyListInsert(LIST *newp)
     printf("Lista este goala! Doriti sa introduceti elementul?\n");
         printf("(y/N): ");
         scanf("%c", &ch);
+        // getchar();
 
     (ch == 'y') ?   InsertElementEnd(newp)  :
                     MeniuPrincipal(1);
@@ -146,10 +146,10 @@ static void EmptyListDelete()
 {
     char ch;
 
-    getchar();
     printf("Lista este goala! Reintoarcere la meniul anterior?\n");
         printf("(y/N): ");
         scanf("%c", &ch);
+        getchar();
 
     (ch == 'y') ?   MeniuPrincipal(2) :
                     exit(1);
@@ -181,8 +181,6 @@ static void DeleteFirst()
         *tracer = (*tracer) -> next;
         (*tracer) -> previous = NULL;
 
-        free(_toDelete -> previous);
-        free(_toDelete -> next);
         free(_toDelete);
     }
 }
@@ -196,11 +194,9 @@ static void DeleteLast()
     else
     {
         _toDelete = *tracer;
-        tail = (*tracer) -> previous;
-        (*tracer) -> previous -> next = NULL;
+        *tracer = (*tracer) -> previous;
+        (*tracer)  -> next = NULL;
 
-        free(_toDelete -> previous);
-        free(_toDelete -> next);
         free(_toDelete);
     }
 }
@@ -212,21 +208,20 @@ static void DeleteKey(unsigned key)
     _Bool present = 0;
 
     if(!(*tracer))      EmptyListDelete();
-    else if((*tracer) -> number == key)     DeleteFirst();
-    else if(tail && tail -> number == key)  DeleteLast();
+    else if(*tracer && (*tracer) -> number == key)  DeleteFirst();
+    else if(tail && tail -> number == key)          DeleteLast();
     else
     {
         while(*tracer && (*tracer) -> number != key)
             tracer = &(*tracer) -> next;
-
+        
         if(*tracer && (*tracer) -> number == key)
         {
             _toDelete = *tracer;
-            (*tracer) -> previous -> next = (*tracer) -> next;
-            (*tracer) -> next -> previous = (*tracer) -> previous;
+            tracer = &(*tracer) -> previous;
+            (*tracer) -> next = (*tracer) -> next -> next;
+            (*tracer) -> next -> previous = *tracer;
 
-            free(_toDelete -> previous);
-            free(_toDelete -> next);
             free(_toDelete);
 
             present = 1;
@@ -267,7 +262,8 @@ static void MissingElementSearch()
 
 static void PrintElement(LIST **tracer)
 {
-    printf("Elementul a fost gasit!\n");
+    getchar();
+    printf("\nElementul a fost gasit in lista actuala!\n");
     printf("%u\n", (*tracer) -> number);
 }
 
@@ -301,7 +297,6 @@ static void EmptyListPrint()
 {
     char ch;
 
-    getchar();
     printf("Lista este goala! Reintoarcere la meniul anterior?\n");
         printf("(y/N): ");
         scanf("%c", &ch);
@@ -333,7 +328,7 @@ static void PrintListLastFirst()
     if(!(*tracer))      EmptyListPrint();
     else
     {
-        while(*tracer);
+        while(*tracer)
         {
             printf("%u\n", (*tracer) -> number);
 
@@ -370,8 +365,6 @@ static void DestroyWholeList()
             _toDelete = *tracer;
             tracer = &(*tracer) -> next;
 
-            free(_toDelete -> previous);
-            free(_toDelete -> next);
             free(_toDelete);
         }
 
@@ -578,6 +571,7 @@ static void AddLink(int option, unsigned key, LIST *newp)
             break;
         case 4:
             InsertAfter(key, newp);
+            break;
         default:
             printf("Something went Wrong with AddLink!\n");
             break;

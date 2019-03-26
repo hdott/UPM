@@ -2,6 +2,7 @@
 
 typedef struct lista LIST;
 
+extern LIST *head;
 
 LIST *NewElement(unsigned number);
 

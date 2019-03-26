@@ -77,7 +77,7 @@ static void MeniuAdaugare()
                 scanf("%u", &nr);
                 getchar();
 
-                ControlLink(1, 2, 0, NULL);
+                ControlLink(1, 2, 0, NewElement(nr));
                 printf("\nElementul a fost Adaugat cu Succes!\n");
             } while (ContinueFork() != '0');
 
@@ -158,6 +158,7 @@ static void MeniuStergere()
                 printf("- Stergerea unui Element -\n\n");
                 printf("(unsigned_cheie): ");
                 scanf("%u", &key);
+                getchar();
 
                 ControlLink(2, 3, key, NULL);
                 printf("Elementul a fost Sters cu Success!\n");
