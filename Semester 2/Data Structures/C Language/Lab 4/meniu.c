@@ -267,7 +267,8 @@ static void MeniuOpExtinse()
             printf("- Adaugarea unui Element dupa fiecare Divizor al sau -\n\n");
             printf("(unsigned): ");
             scanf("%u", &nr);
-
+            getchar();
+            
             ControlLink(6, 2, nr, NULL);
 
             ContinueNotForked();

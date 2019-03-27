@@ -65,11 +65,10 @@ static void EmptyListInsert(LIST *newp)
 {
     char ch;
 
-    getchar();
     printf("Lista este goala! Doriti sa introduceti elementul?\n");
         printf("(y/N): ");
         scanf("%c", &ch);
-        // getchar();
+        getchar();
 
     (ch == 'y') ?   InsertElementEnd(newp)  :
                     MeniuPrincipal(1);
@@ -98,13 +97,15 @@ static void InsertBefore(unsigned key, LIST *newp)
     else if((*tracer) -> number == key)     InsertElementStart(newp);
     else
     {
-        while(*tracer && (*tracer) -> number != key)
+        while((*tracer) -> next && (*tracer) -> next -> number != key)
             tracer = &(*tracer) -> next;
 
-        if(*tracer && (*tracer) -> number == key)
+        if((*tracer) -> next && (*tracer) -> next -> number == key)
         {
-            newp -> next = *tracer;
-            (*tracer) -> previous -> next = newp;
+            newp -> next = (*tracer) -> next;
+            newp -> previous = *tracer;
+            (*tracer) -> next -> previous = newp;
+            (*tracer) -> next = newp;
 
             present = 1;
         }
@@ -120,6 +121,7 @@ static void InsertAfter(unsigned key, LIST *newp)
 
     if(!(*tracer))                          EmptyListInsert(newp);
     else if((*tracer) -> number == key)     InsertElementStart(newp);
+    else if(tail && tail -> number == key)  InsertElementEnd(newp);
     else
     {
         while(*tracer && (*tracer) -> number != key)
@@ -131,6 +133,7 @@ static void InsertAfter(unsigned key, LIST *newp)
             
             newp -> next = (*tracer) -> next;
             newp -> previous = *tracer;
+            (*tracer) -> next -> previous = newp;
             (*tracer) -> next = newp;
 
             present = 1;
@@ -393,20 +396,18 @@ LIST *tailTemp = NULL;
 
 static void InsertTempEnd(LIST *newp)
 {
-    LIST **tracer =  &headTemp;
+    LIST **tracer =  &tailTemp;
 
     if(!(*tracer))
     {
         *tracer = newp;
-        tailTemp =  newp;
+        headTemp =  newp;
     }
     else
     {
-        while((*tracer) -> next)    tracer = &(*tracer) -> next;
-
         (*tracer) -> next = newp;
         newp -> previous = *tracer;
-        tailTemp = newp;
+        *tracer = newp;
     }
 }
 
@@ -423,13 +424,11 @@ static void DestroyWholeTemp()
             _toDelete = *tracer;
             tracer = &(*tracer) -> next;
 
-            free(_toDelete -> previous);
-            free(_toDelete -> next);
             free(_toDelete);
         }
 
-        free(headTemp);
-        free(tailTemp);
+        headTemp = NULL;
+        tailTemp = NULL;
     }
 }
 
@@ -462,33 +461,44 @@ static void RemoveDuplicates()
         }
     }
 
-    LIST *pAux = headTemp;
+    LIST *pAuxHead = headTemp;
+    LIST *pAuxTail = tailTemp;
     headTemp = head;
-    head = pAux;
-    tail = tailTemp;
+    tailTemp = tail;
+    head = pAuxHead;
+    tail = pAuxTail;
 
-    free(pAux);
     DestroyWholeTemp();
 }
 
 static void AddAfterDivisor(unsigned key)
 {
-    LIST **tracer = NULL;
+    LIST **tracer = &head;
 
     if(!(*tracer))      EmptyListOpExtinse();
     else
     {
         while(*tracer)
         {
-            if(*tracer && !(key % ((*tracer) -> number)))
+            if(*tracer && !(key % (*tracer) -> number))
             {
                 LIST *newp = NewElement(key);
 
+                if(!(*tracer) -> next)  tail = newp;
+
                 newp -> next = (*tracer) -> next;
                 newp -> previous = *tracer;
+                (*tracer) -> next -> previous = newp;
                 (*tracer) -> next = newp;
-            }
 
+                if(!(*tracer) -> next -> next)  break;
+                else
+                {
+                    tracer = &(*tracer) -> next -> next;
+                    continue;
+                }
+            }
+            
             tracer = &(*tracer) -> next;
         }
     }
@@ -498,22 +508,20 @@ static void OrderAscending()
 {
     LIST **tracer1 = &head;
     LIST **tracer2 = NULL;
-    LIST *pAux;
 
     if(!(*tracer1))      EmptyListOpExtinse();
     else
     {
         while((*tracer1) -> next)
         {
-            *tracer2 = (*tracer1) -> next;
-
+            tracer2 = &(*tracer1) -> next;
             while(*tracer2)
             {
                 if((*tracer1) -> number > (*tracer2) -> number)
                 {
-                    pAux = *tracer1;
-                    *tracer1 = *tracer2;
-                    *tracer2 = pAux;
+                    unsigned Aux = (*tracer1) -> number;
+                    (*tracer1) -> number = (*tracer2) -> number;
+                    (*tracer2) -> number = Aux;
                 }
 
                 tracer2 = &(*tracer2) -> next;
@@ -536,21 +544,21 @@ static void OrderDescending()
     {
         while((*tracer1) -> next)
         {
-            *tracer2 = (*tracer1) -> next;
+            tracer2 = &(*tracer1) -> next;
 
             while(*tracer2)
             {
                 if((*tracer1) -> number < (*tracer2) -> number)
                 {
-                    pAux = *tracer1;
-                    *tracer1 = *tracer2;
-                    *tracer2 = pAux;
+                    unsigned Aux = (*tracer1) -> number;
+                    (*tracer1) -> number = (*tracer2) -> number;
+                    (*tracer2) -> number = Aux;
                 }
 
                 tracer2 = &(*tracer2) -> next;
             }
 
-            tracer1 =&(*tracer1) -> next;
+            tracer1 = &(*tracer1) -> next;
         }
     }
 
