@@ -14,6 +14,7 @@ static void GenerateVect()
     printf("(size): ");
         scanf("%u", &size);
         getchar();
+        puts("");
 
     vectorSecvential = (char*) malloc(size);
     vectorSortat = (char*) malloc(size);
@@ -25,9 +26,14 @@ static void GenerateVect()
         for(int j=0; j<100; ++j)
             vectorSecvential[i] = rand() % 255;
 
+    fputs("\e[?25l", stdout);
     static unsigned char temp;
     for(int i=0; i<size; ++i)
     {
+        float y=i, x=size, nr;
+        nr = y * 100 / x;
+        printf("Loading %.2f%%\r", nr);
+
         for(int k=0; k<100; ++k)
             temp = rand() % 255;
 
@@ -48,7 +54,8 @@ static void GenerateVect()
         }
     }
 
-    printf("\nVectorii au fost generati cu Succes!\n");
+    fputs("\e[?25h", stdout);
+    printf("\n\nVectorii au fost generati cu Succes!\n");
 }
 
 static void PrintElemePoz()
