@@ -68,7 +68,7 @@ static void CreateTree()
     }
 
     fputs("\e[?25h", stdout);
-    printf("\n\nCopacul a fost generat cu Succes!\n");
+    printf("\n\nArborele a fost generat cu Succes!\n");
 }
 
 // inorder+postorder = preorder
