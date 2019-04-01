@@ -40,7 +40,7 @@ static void Enqueue(char nume[], char prenume[], unsigned serie[])
         ++alloc;
 
         _aux = realloc(vector, (maximum = alloc * MAX) * sizeof(QUEUE));
-
+        
         if(!_aux)
         {
             printf("\nSomething went Wrong Resizing the Queue!\n");
