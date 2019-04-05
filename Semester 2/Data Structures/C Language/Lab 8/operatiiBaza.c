@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 
-typedef struct copac
+typedef struct arbore
 {
     int numar;
-    struct copac *left;
-    struct copac *right;
+    struct arbore *left;
+    struct arbore *right;
 } TREE;
 
 TREE *head = NULL;

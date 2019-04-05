@@ -4,11 +4,11 @@
 #include <limits.h>
 #define MAX 100
 
-typedef struct copac
+typedef struct arbore
 {
     int numar;
-    struct copac *left;
-    struct copac *right;
+    struct arbore *left;
+    struct arbore *right;
 } TREE;
 
 static TREE *head = NULL;
