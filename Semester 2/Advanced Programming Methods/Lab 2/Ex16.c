@@ -26,6 +26,12 @@ int main(void)
         break;
     }
 
+    printf("\nLiterele introduse afisate invers alfabetic:\n");
+    for(int i=CHARS-1; i>=65; --i)
+        if(chars[i])    printf("%c ", i);
+
+    puts("");
+
     free(chars);
     return 0;
 }
