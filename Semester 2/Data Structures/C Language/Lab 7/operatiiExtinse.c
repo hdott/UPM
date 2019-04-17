@@ -23,8 +23,7 @@ static void GenerateVect()
     srand(time(&t));
 
     for(int i=0; i<size; ++i)
-        for(int j=0; j<100; ++j)
-            vectorSecvential[i] = rand() % 255;
+        vectorSecvential[i] = random() % 255;
 
     fputs("\e[?25l", stdout);
     static unsigned char temp;

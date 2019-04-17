@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+static int findMaxArr(int *vector, int size)
+{
+    int max = vector[0];
+
+    for(int i=1; i<size; ++i)
+        if(max < vector[i])
+            max = vector[i];
+
+    return  max;
+}
+
+static int findMinArr(int *vector, int size)
+{
+    int min = vector[0];
+
+    for(int i=1; i<size; ++i)
+        if(min > vector[i])
+            min = vector[i];
+
+    return min;
+}
+
+void CountingSortIntegers(int *vector, int size)
+{
+    int max = findMaxArr(vector, size);
+    int min = findMinArr(vector, size);
+    int range = max-min+1;
+
+    int *count = (int*) calloc(range, sizeof(int));
+    int *output = (int*) malloc(size * sizeof(int));
+
+    for(int i=0; i<size; ++i)       count[vector[i]-min]++;
+
+    for(int i=1; i<range; ++i)      count[i] += count[i-1];
+
+    for(int i=size-1; i>=0; --i)    output[--count[vector[i]-min]] = vector[i];
+
+    for(int i=0; i<size; ++i)       vector[i] = output[i];
+
+    free(count);
+    free(output);
+}
