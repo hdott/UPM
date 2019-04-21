@@ -1,0 +1,1 @@
+void QuickSortRnd(int *vector, int start, int end);
