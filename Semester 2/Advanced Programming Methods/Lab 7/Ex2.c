@@ -4,7 +4,7 @@ int power(int x, int y)
 {
     if(y==1)    return x;
 
-    return power(x+x, --y);
+    return x*power(x, --y);
 }
 
 int main(void)
