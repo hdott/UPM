@@ -39,7 +39,7 @@ void heap(int *vector, int n, int size)
 
 int main(void)
 {
-    int vector[] = {1, 2, 3, 4, 5};
+    int vector[] = {1, 2, 3};
     int size = sizeof(vector)/sizeof(vector[0]);
 
     heap(vector, size, size);
