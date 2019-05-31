@@ -14,9 +14,13 @@ public class MenuPanel extends JPanel
         var leftMenu = new JPanel(new GridLayout(0, 1, 2, 2));
         leftMenu.setSize(200, 100);
 
-        var addButton = new Buttons(Color.BLUE, "Adauga", leftMenu);
-        var delButton = new Buttons(Color.BLUE, "Sterge", leftMenu);
-        var schButton = new Buttons(Color.BLUE, "Cauta", leftMenu);
+        Buttons addButton = new Buttons(Color.BLUE, "Adauga");
+        Buttons delButton = new Buttons(Color.BLUE, "Sterge");
+        Buttons schButton = new Buttons(Color.BLUE, "Cauta");
+
+        leftMenu.add(addButton);
+        leftMenu.add(delButton);
+        leftMenu.add(schButton);
         
         frame.add(leftMenu, BorderLayout.WEST);
     }
