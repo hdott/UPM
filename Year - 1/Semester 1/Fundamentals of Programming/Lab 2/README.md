@@ -30,3 +30,37 @@
     >   * Să se genereze un sunet
     >   * Să se afişeze acelaşi mesaj cu o poziţie deplasată la dreapta şi o poziţie deplasată în jos
     >   * Să se repete ultimele două cerinţe de 3 ori
+- [Ex_2-5](https://github.com/hdott/UPM-UMFST---Computer-Science/blob/master/Year%20-%201/Semester%201/Fundamentals%20of%20Programming/Lab%202/Ex2_5.c)
+    > Să se afişeze următorul text pe ecran (fără a utiliza caracterul spaţiu):
+    ```
+    A       A
+        AA
+    A       A
+        AA
+            BB
+        AA
+    A       A
+    ```
+    > Terminarea programului se va realiza la apăsarea unei taste.
+- [Ex_2-6](https://github.com/hdott/UPM-UMFST---Computer-Science/blob/master/Year%20-%201/Semester%201/Fundamentals%20of%20Programming/Lab%202/Ex2_6.c)
+    > Să se afişeze următorul text pe ecran (fără a utiliza caracterul spaţiu):
+    ```
+    'BB'        'BB'        "BB"        "BB"
+    ```
+    > Terminarea programului se va realiza la apăsarea unei taste
+- [Ex_2-7](https://github.com/hdott/UPM-UMFST---Computer-Science/blob/master/Year%20-%201/Semester%201/Fundamentals%20of%20Programming/Lab%202/Ex2_7.c)
+    > Să se afişeze următorul text pe ecran (fără a utiliza caracterul spaţiu): 
+    ```
+    \\        \\        //        // 
+    //        //        \\        \\ 
+    \\        \\        //        // 
+    //        //        \\        \\
+    ```
+    > Terminarea programului se va realiza la apăsarea unei taste
+- [Ex_2-8](./Ex2_7.c)
+    > Să se implementeze un program cu următoarele funcţionalităţi: 
+    >   - Să se afişeze mesajul "Numele şi prenumele" la mijlocul ecranului 
+    >   - La apăsarea a două taste să se şteargă ecranul 
+    >   - Să se afişeze acelaşi mesaj cu o poziţie deplasată în jos 
+    >   - Să se genereze două sunete 
+    >   - Să se repete ultimele două cerinţe de 5 ori
