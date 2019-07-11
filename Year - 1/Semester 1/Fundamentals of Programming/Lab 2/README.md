@@ -25,9 +25,9 @@
     ```
 - [Ex_2-4](https://github.com/hdott/UPM-UMFST---Computer-Science/blob/master/Year%20-%201/Semester%201/Fundamentals%20of%20Programming/Lab%202/Ex2_4.c)
     > Să se implementeze un program cu următoarele funcţionalităţi: 
-
+    `
     - Sa se afişeze mesajul "Laborator de programare" la mijlocul ecranului
     - La apăsarea unei taste să se ştearga ecranul
     - Să se genereze un sunet
     - Să se afişeze acelaşi mesaj cu o poziţie deplasată la dreapta şi o poziţie deplasată în jos
-    - Să se repete ultimele două cerinţe de 3 ori
+    - Să se repete ultimele două cerinţe de 3 ori`
