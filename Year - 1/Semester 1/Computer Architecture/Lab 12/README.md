@@ -8,4 +8,4 @@
 - [Timer1_Periodic_Interrupts](./Timer1_periodic_interrupts.ino)
     > Programati timer1 sa genereze intreruperi periodice la fiecare 2 secunde:
     >   - in rutina de tratare intrerupere generati un semnal sonor folosind un buzzer
-    >   - conectati un buton pe intrarea digitala D2, opriti/porniti timerul la apasarae butonului.
+    >   - conectati un buton pe intrarea digitala D2, opriti/porniti timerul la apasarea butonului.
