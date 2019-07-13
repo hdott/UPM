@@ -1,4 +1,4 @@
-## LAB 10
+## LAB 0
 
 - [Ex_10-1](./Ex1.c)
     > Sa se defineasca un subprogram care primeste ca parametru un numar natural n si afiseaza numerele de la 1 la n. Sa se apeleze aceasta functie de 3 ori cu diferite valori ale lui n. (Valorilea lui n vor fi citite de la tastatura)
