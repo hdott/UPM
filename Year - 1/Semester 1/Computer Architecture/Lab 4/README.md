@@ -12,4 +12,5 @@
     >   - PIN 1-3   - iesire
     >   - PIN 4-7   - intrare
     >   - La pinii de intrare 4-6 conectati 3 butoane.
+    
     > Scrieti un program care citeste valoarea de la intrare prin registrul PIND si notati valoarea bitului, daca acesta a fost declarat la iesire, daca a fost declarat la intrare, dar nu este conectat nici un echipament la acest pin.
