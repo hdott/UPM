@@ -1,3 +1,3 @@
-# Fundamentele Programarii - Fundamentals of Programming
-## C Language
-## Professor Lefkovits Szidonia
+## Fundamentele Programarii - Fundamentals of Programming
+### Professor Lefkovits Szidonia
+### C Language
