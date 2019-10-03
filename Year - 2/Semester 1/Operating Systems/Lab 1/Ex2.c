@@ -9,6 +9,12 @@ void help() {
     printf("\t- number / number\n");
 }
 
+int isNumber(int x) {
+    if ((x >= 65 && x <= 90) || (x >= 97 && x <= 122))
+            return 0;
+    else    return 1;
+}
+
 int main (int argc, char **argv) {
     int opt = 0,
         nr1,
@@ -23,8 +29,10 @@ int main (int argc, char **argv) {
     // transform the strings into ints so we can use them in computations
     if (argc == 4) {
         opt = *(*(argv+2));
-        nr1 = atoi (*(argv+1));
-        nr2 = atoi (*(argv+3));
+        if (isNumber(*(*argv+1)) || isNumber(*(*argv+2))) {
+            nr1 = atoi (*(argv+1));
+            nr2 = atoi (*(argv+3));   
+        } else  opt = 0;
     }
 
     // arguments management
