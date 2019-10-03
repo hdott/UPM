@@ -21,7 +21,7 @@ int main (int argc, char **argv) {
     }
 
     // transform the strings into ints so we can use them in computations
-    if (argc >= 4) {
+    if (argc == 4) {
         opt = *(*(argv+2));
         nr1 = atoi (*(argv+1));
         nr2 = atoi (*(argv+3));
