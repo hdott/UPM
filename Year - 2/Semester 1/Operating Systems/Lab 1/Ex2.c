@@ -1,18 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void help() {
-    printf("Programul ia urmatoarele argumente: \n");
-    printf("\t- number + number\n");
-    printf("\t- number - number\n");
-    printf("\t- number \"*\" number\n");
-    printf("\t- number / number\n");
+    printf("Programul ia urmatoarele argumente:\n");
+    printf("\t- numar   +   numar\n");
+    printf("\t- numar   -   numar\n");
+    printf("\t- numar \"*\" numar\n");
+    printf("\t- numar   /    numar\n");
 }
 
-int isNumber(int x) {
-    if ((x >= 65 && x <= 90) || (x >= 97 && x <= 122))
+int isNumber(char *str) {
+    for(int i=0; i<strlen(str); ++i) {
+        if ((str[i] >= 65 && str[i] <= 90) || 
+                (str[i] >= 97 && str[i] <= 122))
             return 0;
-    else    return 1;
+    }
+
+    return 1;
 }
 
 int main (int argc, char **argv) {
@@ -20,16 +25,22 @@ int main (int argc, char **argv) {
         nr1,
         nr2;
 
-    // check whether there is no argument, if not jump to switch,
+    // check whether there is no argument, if not jump to switch case,
     // which prints help in this case
     if (argc == 1) {
         goto OPT;
     }
 
-    // transform the strings into ints so we can use them in computations
     if (argc == 4) {
+        // check whether there are more than 1 character in the 2nd argument
+        //  if yes, jump to switch case and print help
+        if(strlen(*(argv+2)) != 1){
+            goto OPT;
+        }
+
         opt = *(*(argv+2));
-        if (isNumber(*(*argv+1)) || isNumber(*(*argv+2))) {
+        if (isNumber(*(argv+1)) && isNumber(*(argv+3))) {
+            // transform the strings into ints so we can use them in computations
             nr1 = atoi (*(argv+1));
             nr2 = atoi (*(argv+3));   
         } else  opt = 0;
