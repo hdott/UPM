@@ -39,7 +39,7 @@ void TempConversion::on_pushButton_clicked()
         fahr = ui->fahrenheit->isChecked();
 
         if (fahr) {
-            float rezultatFahrToCelsius = (gr - 32) * 5 / 9;
+            float rezultatFahrToCelsius = (gr  - 32) * 5 / 9;
             QString rezultat = QString::number(rezultatFahrToCelsius);
             ui->rezultat->setText(rezultat);
         } else if (celsius) {
@@ -49,7 +49,7 @@ void TempConversion::on_pushButton_clicked()
         }
         break;
     case 1:
-        ui->rezultat->setText("Nu a fost Selectat nici o Optiune");
+        ui->rezultat->setText("Nu a fost selectata nici o Optiune");
         break;
     case 2:
         ui->rezultat->setText("Gradele nu au fost Introduse!");
