@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
+using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
@@ -16,6 +17,8 @@ namespace WindowsFormsApp1
     {
         private Thread t;
         private static int direction = 1;
+        static BooleanSwitch logging = new BooleanSwitch("Logg", "Logg description");
+        private StreamWriter fs = null;
 
         public Form1()
         {
@@ -29,6 +32,8 @@ namespace WindowsFormsApp1
             colorDialog2.AllowFullOpen = false;
             colorDialog2.ShowHelp = true;
             colorDialog2.Color = Color.Red;
+
+            logging.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,8 +63,8 @@ namespace WindowsFormsApp1
             Rectangle rct = this.ClientRectangle;
             PointF point = new PointF(rct.Right/2,
                                          rct.Bottom / 2);
-            
 
+            string msg = "Test";
             Console.WriteLine($"{this.Location.X}, {this.Location.Y}");
             Console.WriteLine($"{this.Width}, {this.Height}");
             Console.WriteLine($"{point.X}, {point.Y}");
@@ -67,7 +72,10 @@ namespace WindowsFormsApp1
             drawFormat.FormatFlags = StringFormatFlags.DirectionVertical;
 
             //logging setup
-            StreamWriter fs = null;
+            if(fs != null)
+            {
+                fs.Close();
+            }
             try
             {
                 if (File.Exists("testlog.txt"))
@@ -79,7 +87,13 @@ namespace WindowsFormsApp1
             {
                 throw ex;
             }
-            string logMsg = DateTime.Now.ToString("MM\\/dd\\/yy h\\:mm:ss tt");
+
+            //Trace setup
+            Trace.Listeners.Add(new TextWriterTraceListener(fs));
+            Trace.AutoFlush = true;
+            Trace.Indent();
+
+
 
             while (t.IsAlive)
             {
@@ -89,12 +103,12 @@ namespace WindowsFormsApp1
                 //4 rightDown
                 
 
-                if (point.X == (rct.Right) && direction == 1) direction = 2;
-                if (point.X == (rct.Right) && direction == 4) direction = 3;
+                if (point.X == (rct.Right-(msg.Length*15)) && direction == 1) direction = 2;
+                if (point.X == (rct.Right-(msg.Length*15)) && direction == 4) direction = 3;
                 if (point.X == (rct.X) && direction == 3) direction = 4;
                 if (point.X == (rct.X) && direction == 2) direction = 1;
-                if (point.Y == (rct.Bottom) && direction == 4) direction = 1;
-                if (point.Y == (rct.Bottom) && direction == 3) direction = 2;
+                if (point.Y == (rct.Bottom-16) && direction == 4) direction = 1;
+                if (point.Y == (rct.Bottom-16) && direction == 3) direction = 2;
                 if (point.Y == (rct.Y) && direction == 2) direction = 3;
                 if (point.Y == (rct.Y) && direction == 1) direction = 4;
 
@@ -122,11 +136,16 @@ namespace WindowsFormsApp1
 
                 }
 
-                g.DrawString("LoooL", font, brush, point);
-                Thread.Sleep(100);
+                brush.Color = colorDialog2.Color;
+                g.DrawString(msg, font, brush, point);
+                Trace.WriteLineIf(logging.Enabled, DateTime.Now.ToString("MM\\/dd\\/yy h\\:mm:ss:ms"));
+                //if (logging.Enabled) Console.WriteLine($"{DateTime.Now.ToString("MM\\/dd\\/yy h\\:mm:ss:ms")}");
+                Thread.Sleep(10);
                 g.Clear(colorDialog1.Color);
             }
 
+            fs.Close();
+            Trace.Unindent();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -139,6 +158,19 @@ namespace WindowsFormsApp1
         {
             colorDialog2.ShowDialog();
             label2.Text = colorDialog2.Color.Name;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (logging.Enabled)
+            {
+                logging.Enabled = false;
+                label3.Text = "Off";
+            } else
+            {
+                logging.Enabled = true;
+                label3.Text = "On";
+            }
         }
     }
 }
