@@ -5,11 +5,11 @@ using System.Threading;
 using System.IO;
 using System.Diagnostics;
 
-namespace WindowsFormsApp1
+namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        private Thread t;
+        private MyThread t;
         private static int direction = 1;
         static BooleanSwitch logging = new BooleanSwitch("Logg", "Logg description");
         private StreamWriter fs = null;
@@ -17,7 +17,8 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            t = new Thread(new ThreadStart(run));
+            //t = new Thread(new ThreadStart(run));
+            t = new MyThread(new paint(run));
             
             colorDialog1.AllowFullOpen = false;
             colorDialog1.ShowHelp = true;
@@ -33,19 +34,21 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             Console.WriteLine("pressed button1");
-            if(!t.IsAlive)
+            if(!t.ThreadIsAlive())
             {
-                t = new Thread(new ThreadStart(run));
+                t = new MyThread(new paint(run));
             }
 
-            t.Start();
+            t.ThreadStart();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Console.WriteLine("pressed button2");
-            t.Abort();
+            t.ThreadAbort();
         }
+
+        public delegate void paint();
 
         private void run()
         {
@@ -87,9 +90,7 @@ namespace WindowsFormsApp1
             Trace.AutoFlush = true;
             Trace.Indent();
 
-
-
-            while (t.IsAlive)
+            while (t.ThreadIsAlive())
             {
                 //1 rightTop
                 //2 leftTop
