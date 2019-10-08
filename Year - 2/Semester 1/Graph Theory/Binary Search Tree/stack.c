@@ -37,7 +37,21 @@ int Push (STACK *tracer, STACK *newp) {
 int Pop (STACK *tracer) {
     if (!tracer)    return 0;
     else {
-        TREE *aux = tracer->arb;
-        printf("%d - %s\n", aux->numar, aux->data);
+        PrintNode(tracer->arb);
+        
+        STACK *_toRemove = tracer;
+        tracer = tracer->next;
+
+        free(_toRemove);
+        return 1;
     }
+}
+
+int IsEmptyStack (STACK *tracer) {
+    if (!tracer)    return 1;
+    else    return 0;
+}
+
+TREE *GetArb (STACK *stk) { 
+    return stk->arb;
 }
