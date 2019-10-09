@@ -51,6 +51,6 @@ int IsEmptyQueue (QUEUE *head) {
     else    return 0;
 }
 
-TREE *GetArbQ (QUEUE *head) {
+TREE *GetFirstNode (QUEUE *head) {
     return head->arb;
 }
