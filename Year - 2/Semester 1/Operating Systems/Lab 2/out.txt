@@ -1,0 +1,2 @@
+Suma 13 + 24 este: 37
+Produsul 13 * 24 este: 312
