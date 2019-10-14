@@ -1,0 +1,4 @@
+10/14/19 10:43:33:4333 Event: Loading http://www.google.ro/
+10/14/19 10:43:34:4334 Event: Loading https://www.google.ro/?gws_rd=ssl#spf=1571082213803
+10/14/19 10:43:38:4338 Event: Button pressed [Navigate]
+10/14/19 10:43:45:4345 Event: Loading BLOCKED http://yahoo.com/
