@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>424</width>
-    <height>306</height>
+    <width>378</width>
+    <height>360</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -20,14 +26,14 @@
       <x>20</x>
       <y>10</y>
       <width>331</width>
-      <height>211</height>
+      <height>287</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QListView" name="listView"/>
+        <widget class="QListWidget" name="listWidget"/>
        </item>
        <item>
         <spacer name="horizontalSpacer">
@@ -84,20 +90,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QTextEdit" name="inputText">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>31</height>
-            </size>
-           </property>
-          </widget>
+          <widget class="QLineEdit" name="lineEdit"/>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton">
@@ -125,7 +118,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>424</width>
+     <width>378</width>
      <height>21</height>
     </rect>
    </property>

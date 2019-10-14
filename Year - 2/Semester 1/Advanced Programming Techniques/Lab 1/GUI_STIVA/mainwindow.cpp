@@ -12,12 +12,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete arr;
+    stiva.~Array_Stack();
     delete ui;
 }
 
 void MainWindow::on_pushButton_clicked()
 {
-    QString nr = ui->inputText->text();
-    arr->push = nr.toInt();
+    ui->listWidget->clear();
+    QString nr = ui->lineEdit->text();
+    stiva.push(nr.toInt());
+
+    for(int i=stiva.Iterator(); i>=0; --i){
+        QString tmp = std::to_string(stiva.PeekItem(i));
+        ui->listWidget->addItem(tmp);
+    }
+
 }

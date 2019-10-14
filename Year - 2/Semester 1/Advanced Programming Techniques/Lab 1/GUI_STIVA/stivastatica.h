@@ -7,7 +7,7 @@ using namespace std;
 class Stack
 {
 public:
-//    Stack() {}
+    Stack() {};
     virtual void push(int) = 0;
     virtual int pop() = 0;
     virtual int peek() = 0;
@@ -26,17 +26,19 @@ private:
     int top;
     int max;
 
-//    Array_Stack: public Stack() {};
+public:
     Array_Stack(int max=100);
     Array_Stack(const Array_Stack&);
     ~Array_Stack();
 
-    virtual void push(int);
+    virtual void push(int x);
     virtual int pop();
     virtual int peek();
     virtual bool isEmpty();
     virtual bool isFull();
-    virtual bool print();
+    virtual void print();
+    virtual int PeekItem(int x);
+    virtual int Iterator();
 };
 
 #endif // STIVASTATICA_H

@@ -1,5 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include "stivastatica.h"
 
 #include <QMainWindow>
 
@@ -19,6 +20,8 @@ private slots:
     void on_pushButton_clicked();
 
 private:
+    Array_Stack stiva;
+    QStringList lista;
     Ui::MainWindow *ui;
 };
 
