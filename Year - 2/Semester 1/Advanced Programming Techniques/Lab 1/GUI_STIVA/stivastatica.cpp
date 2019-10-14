@@ -25,7 +25,7 @@ int Array_Stack:: pop(){
 }
 
 int Array_Stack:: peek(){
-    return vector[top];
+    return vector[top-1];
 }
 
 bool Array_Stack:: isEmpty(){
@@ -56,5 +56,5 @@ int Array_Stack:: PeekItem(int i){
 }
 
 int Array_Stack:: Iterator(){
-    return top;
+    return top-1;
 }

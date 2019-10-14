@@ -19,9 +19,12 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_popButton_clicked();
+
+    void on_lineEdit_returnPressed();
+
 private:
     Array_Stack stiva;
-    QStringList lista;
     Ui::MainWindow *ui;
 };
 
