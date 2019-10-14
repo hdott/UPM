@@ -59,13 +59,13 @@ Fractie Fractie::impartire(Fractie fract){
     return Fractie(tmp_numarator, tmp_numitor);
 }
 
-int Fractie::cmmdc(Fractie fract){
+int Fractie::cmmdc(int x, int y){
     int r,
         a,
         b;
 
-    a = fract.numarator;
-    b = fract.numitor;
+    a = x;
+    b = y;
 
     while(r != 0){
         r = a % b;
@@ -77,7 +77,7 @@ int Fractie::cmmdc(Fractie fract){
 }
 
 Fractie Fractie::simplifica(){
-    int cmmdc = Fractie::cmmdc(Fractie(this->numarator, this->numitor));
+    int cmmdc = Fractie::cmmdc(this->numarator, this->numitor);
 
     return Fractie(this->numarator/cmmdc, this->numitor/cmmdc);
 }
