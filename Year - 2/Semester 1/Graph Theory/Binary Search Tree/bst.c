@@ -1,157 +1,218 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "stack.h"
-#include "queue.h"
-#define MAX 24
+#include "stiva.h"
+#include "coada.h"
 
 
-typedef struct arbore {
-    int numar;
-    char data[MAX];
-    struct arbore *left;
-    struct arbore *right;
-} TREE;
+typedef struct bst{
+    int nr;
+    char *str;
+    struct bst *left,
+                *right;
+} BST;
 
 
-TREE *NewElement (int numar, char *data) {
-    TREE *newp = (TREE*) malloc(sizeof(TREE));
+static BST *head_bst = NULL; 
 
-    newp -> numar = numar;
-    memcpy(&newp -> data, data, strlen(data));
-    newp -> left = NULL;
-    newp -> right = NULL;
-
-    return newp;   
+BST *GetHead(){
+    return head_bst;
 }
 
-int Insert (TREE *tracer, TREE *newp) {
-    if (!(tracer)) {
-        tracer = newp;
-        return 1;
-    } else if (newp->numar < tracer->numar) {
-        Insert(&tracer->left, newp);
-    } else {
-        Insert(&tracer->right, newp);
+void SetHead(BST *head){
+    head_bst = head;
+}
+
+
+BST *NewElement(const int nr, const char *str){
+    BST *newp = (BST*) malloc(sizeof(BST));
+
+    newp->nr = nr;
+    newp->str = (char*) malloc(strlen(str)+1);
+    strcpy(newp->str, str);
+    newp->left = NULL;
+    newp->right = NULL;
+
+    return newp;
+}
+
+void Insert(BST **tracer, BST *newp){
+    if(!(*tracer)){
+        *tracer = newp;
+    } else{
+        if(newp->nr < (*tracer)->nr){
+            Insert(&(*tracer)->left, newp);
+        } else{
+            Insert(&(*tracer)->right, newp);
+        }
+    }
+}
+
+int SearchKey(BST *tracer, int key){
+    if(!tracer){
+        return 0;
+    } else{
+        if(tracer->nr == key){
+            return 1;
+        } else if(key < tracer->nr){
+            SearchKey(tracer->left, key);
+        } else{
+            SearchKey(tracer->right, key);
+        }
+    }
+}
+
+int SearchNonKey(BST *tracer, char *str){
+    if(tracer){
+        if(!strcmp(tracer->str, str)){
+            return 1;
+        } else{
+            if(SearchNonKey(tracer->left, str)){
+                return 1;
+            }
+            if(SearchNonKey(tracer->right, str)){
+                return 1;
+            }
+        }
     }
 
     return 0;
 }
 
-void InOrder (TREE *tracer) {
-    if (tracer) {
-        InOrder(&tracer->left);
-        printf("%d - %s", tracer->numar, tracer->data);
-        InOrder(&tracer->right);
-    }
-}
-
-void PreOrder (TREE *tracer) {
-    if (tracer) {
-        printf("%d - %s", tracer->numar, tracer->data);
-        PreOrder(&tracer->left);
-        PreOrder(&tracer->right);
-    }
-}
-
-void PostOrder (TREE *tracer) {
-    if (tracer) {
-        PostOrder(&tracer->left);
-        PostOrder(&tracer->right);
-        printf("%d - %s", tracer->numar, tracer->data);
-    }
-}
-
-int Search (TREE *tracer, int numar) {
-    if (!tracer)                        return 0;
-    else if (tracer->numar == numar)    return 1;
-    else if (numar < tracer->numar)
-        Search(&tracer->left, numar);
-    else
-        Search(&tracer->right, numar);
-}
-
-int SearchNotKey (TREE *tracer, char *str) {
-    if (!tracer)    return 0;
-    else if (!strcmp(tracer->data, str))    return 1;
-    else {
-        SearchNotKey(tracer->left, str);
-        SearchNotKey(tracer->right, str);
-    }
-}
-
-void PrintNode (TREE *tracer) {
-    printf("%d - %s\n", tracer->numar, tracer->data);
-}
-
-static TREE *FindSmallest(TREE *tracer) {
-    TREE *_smallest = tracer;
-
-    while (_smallest->left) _smallest = _smallest->left;
-
-    return _smallest;
-}
-
-TREE *DeleteKey(TREE *tracer, int key) {
-    if (!tracer)    return (tracer);
-
-    if (tracer->numar > key)
-        tracer->left = DeleteKey(tracer->left, key); 
-    else if (tracer->numar < key)
-        tracer->right = DeleteKey(tracer->right, key);
-    else {
-        if (!tracer->left) {
-            TREE *_temp = tracer->right;
-            
-            free(tracer);
-            return _temp;
-        }
-        else if (!tracer->right) {
-            TREE *_temp = tracer->left;
-
-            free(tracer);
-            return _temp;
-        }
-
-        TREE *_temp = FindSmallest(tracer->right);
-
-        tracer->numar = _temp->numar;
-
-        tracer->right = DeleteKey(tracer->right, key);
+static BST *FindSmallest(BST *tracer){
+    while(tracer->left){
+        tracer = tracer->left;
     }
 
     return tracer;
 }
 
-int DeleteTree (TREE *tracer) {
-    if (tracer) {
-        DeleteTree(tracer->left);
-        DeleteTree(tracer->right);
+BST *DeleteKey(BST *tracer, KEY *key){
+    if(!tracer){
+        return tracer;
+    }
 
-        free(tracer);
+    switch(key->opt){
+        case 1:
+            if(key->nr < tracer->nr){
+                tracer->left = DeleteKey(tracer->left, key);
+            } else if(key->nr > tracer->nr){
+                tracer->right = DeleteKey(tracer->right, key);
+            } else{
+                if(!tracer->left){
+                    BST *_tmp = tracer->right;
+
+                    free(tracer->str);
+                    free(tracer);
+                    return _tmp;
+                } else if(!tracer->right){
+                    BST *_tmp = tracer->left;
+
+                    free(tracer->str);
+                    free(tracer);
+                    return _tmp;
+                }
+
+                BST *_tmp = FindSmallest(tracer);
+                tracer->nr = _tmp->nr;
+                strcpy(tracer->str, _tmp->str);
+                tracer->right = DeleteKey(tracer->right, key);
+            }
+
+            return tracer;
+            break;
+        case 0:
+            if(strcmp(key->str, tracer->str)){
+                tracer->left = DeleteKey(tracer->left, key);
+                tracer->right = DeleteKey(tracer->right, key);
+            } else{
+                if(!tracer->left){
+                    BST *_tmp = tracer->right;
+
+                    free(tracer->str);
+                    free(tracer);
+                    return _tmp;
+                } else if(!tracer->right){
+                    BST *_tmp = tracer->left;
+
+                    free(tracer->str);
+                    free(tracer);
+                    return _tmp;
+                }
+
+                BST *_tmp = FindSmallest(tracer);
+                tracer->nr = _tmp->nr;
+                strcpy(tracer->str, _tmp->str);
+                tracer->right = DeleteKey(tracer->right, key);
+            }
+
+            return tracer;
+            break;
+        default:
+            printf("Something went wrong with delete key!\n");
+            break;
     }
 }
 
-void InOrderWithStack (TREE *tracer, STACK *head) {
-    while (tracer || !IsEmptyStack(head)) {
-        while (tracer) {
-            Push(head, NewStack(tracer));
+void InOrder(BST *tracer){
+    if(tracer){
+        InOrder(tracer->left);
+        printf("%d, %s\n", tracer->nr, tracer->str);
+        InOrder(tracer->right);
+    }
+}
+
+void PreOrder(BST *tracer){
+    if(tracer){
+        printf("%d, %s\n", tracer->nr, tracer->str);
+        PreOrder(tracer->left);
+        PreOrder(tracer->right);
+    }
+}
+
+void PostOrder(BST *tracer){
+    if(tracer){
+        PostOrder(tracer->left);
+        PostOrder(tracer->right);
+        printf("%d, %s\n", tracer->nr, tracer->str);
+    }
+}
+
+void InOrderWithStack(BST *tracer){
+    while(tracer || !StackIsEmpty()){
+        while(tracer){
+            Push(NewNodeStack(tracer));
             tracer = tracer->left;
         }
 
-        Pop(head);
-        tracer = GetArb(head)->right;
-    }    
+        BST *_tmp = Pop();
+        printf("%d, %s\n", _tmp->nr, _tmp->str);
+        tracer = _tmp->right;
+    }
 }
 
-void LevelOrderTraversal (TREE *tracer, QUEUE *head, QUEUE *tail) {
-    Enqueue(head, tail, NewQueue(tracer));
+void LevelOrderTraversalWithQueue(BST *tracer){
+    Enqueue(NewNodeQueue(tracer));
 
-    while (!IsEmptyQueue(head)) {
-        tracer = GetArbQ(head)->arb;
-        Dequeue(head);
+    while(!QueueIsEmpty()){
+        tracer = Dequeue();
+        printf("%d, %s\n", tracer->nr, tracer->str);
 
-        if (tracer->left)   Enqueue(head, tail, NewQueue(tracer->left));
-        if (tracer->right)  Enqueue(head, tail, NewQueue(tracer->right));
+        if(tracer->left){
+            Enqueue(NewNodeQueue(tracer->left));
+        }
+        if(tracer->right){
+            Enqueue(NewNodeQueue(tracer->right));
+        }
+    }
+}
+
+void DeleteTree(BST *tracer){
+    if(tracer){
+        DeleteTree(tracer->left);
+        DeleteTree(tracer->right);
+
+        free(tracer->str);
+        free(tracer);
     }
 }

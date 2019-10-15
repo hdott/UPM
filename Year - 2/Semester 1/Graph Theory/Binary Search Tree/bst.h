@@ -1,14 +1,18 @@
-#include "stack.h"
+#include "menu.h"
 
-typedef struct arbore TREE;
+typedef struct bst BST;
 
-TREE *NewElement (int numar, char *data);
-int Insert (TREE *tracer, TREE *newp);
-void InOrder (TREE *tracer);
-void InOrder (TREE *tracer);
-void PreOrder (TREE *tracer);
-void PostOrder (TREE *tracer);
-void PrintNode (TREE *tracer);
-TREE *DeleteKey(TREE **tracer, int key);
-int DeleteTree (TREE *tracer);
-void InOrderWithStack (TREE *tracer, STACK *head);
+
+BST *GetHead();
+void SetHead(BST *head);
+BST *NewElement(const int nr, const char *str);
+void Insert(BST **tracer, BST *newp);
+int SearchKey(BST *tracer, int key);
+int SearchNonKey(BST *tracer, char *str);
+BST *DeleteKey(BST *tracer, KEY *key);
+void InOrder(BST *tracer);
+void PreOrder(BST *tracer);
+void PostOrder(BST *tracer);
+void InOrderWithStack(BST *tracer);
+void LevelOrderTraversalWithQueue(BST *tracer);
+void DeleteTree(BST *tracer);
