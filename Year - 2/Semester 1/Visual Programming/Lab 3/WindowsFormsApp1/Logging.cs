@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
         private static readonly object padlock = new object();
         private StreamWriter fs = null;
 
-        Logging()
+        private Logging()
         {
             try
             {
