@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "bst.h"
-// #include "menu.h"
-// #define MAXL 100
 
 
 static void opt_1_InsertNode();
