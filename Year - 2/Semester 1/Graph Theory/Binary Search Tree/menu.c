@@ -186,7 +186,7 @@ static void StergereNod(){
         printf("\n[ERR] Optiunea nu este disponibila!\n");
     }
     getchar();
-
+    
     BST *_tmp = GetHead();
     switch(key.opt){
         case 1:

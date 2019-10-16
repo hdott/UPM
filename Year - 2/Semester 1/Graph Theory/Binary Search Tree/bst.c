@@ -113,10 +113,14 @@ BST *DeleteKey(BST *tracer, KEY *key){
                     return _tmp;
                 }
 
-                BST *_tmp = FindSmallest(tracer);
+                BST *_tmp = FindSmallest(tracer->right);
                 tracer->nr = _tmp->nr;
                 strcpy(tracer->str, _tmp->str);
-                tracer->right = DeleteKey(tracer->right, key);
+                KEY _key;
+                _key.opt = 1;
+                _key.nr = _tmp->nr;
+
+                tracer->right = DeleteKey(tracer->right, &_key);
             }
 
             return tracer;
@@ -140,10 +144,14 @@ BST *DeleteKey(BST *tracer, KEY *key){
                     return _tmp;
                 }
 
-                BST *_tmp = FindSmallest(tracer);
+                BST *_tmp = FindSmallest(tracer->right);
                 tracer->nr = _tmp->nr;
                 strcpy(tracer->str, _tmp->str);
-                tracer->right = DeleteKey(tracer->right, key);
+                KEY _key;
+                _key.opt = 0;
+                strcpy(_key.str, _tmp->str);
+
+                tracer->right = DeleteKey(tracer->right, &_key);
             }
 
             return tracer;
@@ -178,15 +186,17 @@ void PostOrder(BST *tracer){
     }
 }
 
+// updated at request
 void InOrderWithStack(BST *tracer){
     while(tracer || !StackIsEmpty()){
         while(tracer){
             Push(NewNodeStack(tracer));
+            printf("%d, %s\n", tracer->nr, tracer->str); 
             tracer = tracer->left;
         }
 
         BST *_tmp = Pop();
-        printf("%d, %s\n", _tmp->nr, _tmp->str);
+        // printf("%d, %s\n", _tmp->nr, _tmp->str);
         tracer = _tmp->right;
     }
 }
