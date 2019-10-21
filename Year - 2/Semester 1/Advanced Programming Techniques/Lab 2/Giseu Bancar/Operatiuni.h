@@ -4,6 +4,8 @@
 // #include "ContBancar.h"
 // class ContBancar;
 
+class ContBancar;
+
 class Operatiuni{
     protected:
         int zile{10};
@@ -13,9 +15,9 @@ class Operatiuni{
 
         virtual float getSumaTotala() = 0;
         virtual float getDobanda() = 0;
-        // virtual void depunere(ContBancar contDest&, float suma) = 0;
-        // virtual void extragere(ContBancar contDest&, float suma) = 0;
-        // virtual void transfer(ContBancar contDest&, float suma) = 0;
+        virtual void depunere(ContBancar& contDest, float suma) = 0;
+        virtual void extragere(ContBancar& contDest, float suma) = 0;
+        virtual void transfer(ContBancar& contDest, float suma) = 0;
 };
 
 // #endif
