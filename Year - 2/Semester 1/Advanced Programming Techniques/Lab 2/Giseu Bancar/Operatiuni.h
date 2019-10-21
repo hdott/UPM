@@ -6,16 +6,16 @@
 
 class Operatiuni{
     protected:
-        // int zile{1};
+        int zile{10};
     public:
         // Operatiuni(){};
         // ~Operatiuni();
 
-        virtual float getSumaTotala();
-        virtual float getDobanda();
-        // virtual void depunere(ContBancar contDest&, float suma);
-        // virtual void extragere(ContBancar contDest&, float suma);
-        // virtual void transfer(ContBancar contDest&, float suma);
+        virtual float getSumaTotala() = 0;
+        virtual float getDobanda() = 0;
+        // virtual void depunere(ContBancar contDest&, float suma) = 0;
+        // virtual void extragere(ContBancar contDest&, float suma) = 0;
+        // virtual void transfer(ContBancar contDest&, float suma) = 0;
 };
 
 // #endif

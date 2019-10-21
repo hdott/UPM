@@ -10,11 +10,9 @@ class ContBancar:Operatiuni{
         std::string numarCont;
         float suma;
         std::string moneda;
-        int zile{0};
     public:
         ContBancar(std::string numarCont, float suma, std::string moneda="RON");
         ContBancar(const ContBancar&);
-        // ~ContBancar();
 
         inline std::string getNumarCont(){return numarCont;}
         inline float getSuma(){return suma;}
@@ -25,9 +23,9 @@ class ContBancar:Operatiuni{
 
         float getSumaTotala();
         float getDobanda();
-        void depunere(ContBancar contDest, float suma);
-        void extragere(ContBancar contDest, float suma);
-        void transfer(ContBancar contDest, float suma);
+        void depunere(ContBancar& contDest, float suma);
+        void extragere(ContBancar& contDest, float suma);
+        void transfer(ContBancar& contDest, float suma);
 };
 
 // #endif

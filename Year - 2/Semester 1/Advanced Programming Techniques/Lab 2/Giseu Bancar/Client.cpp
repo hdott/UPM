@@ -2,7 +2,7 @@
 #include "Client.h"
 
 
-Client::Client(std::string nume, std::string prenume, std::string,
+Client::Client(std::string nume, std::string prenume, 
                 std::string adresa, ContBancar cont){
     this->nume = nume;
     this->prenume = prenume;
@@ -18,7 +18,7 @@ Client::Client(const Client& client){
 }
 
 Client::~Client(){
-    conturi.clear();
+    // conturi.clear();
 }
 
 void Client::addCont(ContBancar cont){

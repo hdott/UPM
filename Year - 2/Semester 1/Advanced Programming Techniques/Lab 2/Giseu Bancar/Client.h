@@ -13,7 +13,7 @@ class Client{
                     adresa;
         std::vector<ContBancar> conturi;
     public:
-        Client(std::string nume, std::string prenume, std::string,
+        Client(std::string nume, std::string prenume,
                 std::string adresa, ContBancar cont);
         Client(const Client&);
         ~Client();

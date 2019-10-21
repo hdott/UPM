@@ -10,7 +10,6 @@ class Banca{
     private:
         std::vector<Client> clienti;
         std::string codBanca;
-        int nrClienti{0};
     public:
         Banca(std::string codBanca, Client client);
         Banca(const Banca&);

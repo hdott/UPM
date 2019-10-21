@@ -25,20 +25,20 @@ float ContBancar::getDobanda(){
         } else{
             return zile*0.8;
         }
-    } else if(this->moneda.compare("EUR")){
+    } else if(this->moneda.compare("EUR") == 0){
         return zile*0.1;
     }
 }
 
-void ContBancar::depunere(ContBancar contDest, float suma){
+void ContBancar::depunere(ContBancar& contDest, float suma){
     contDest.suma += suma;
 }
 
-void ContBancar::extragere(ContBancar contDest, float suma){
+void ContBancar::extragere(ContBancar& contDest, float suma){
     contDest.suma -= suma;
 }
 
-void ContBancar::transfer(ContBancar contDest, float suma){
+void ContBancar::transfer(ContBancar& contDest, float suma){
     if(this->moneda.compare("RON") == 0 && 
         contDest.moneda.compare("RON") == 0){
         if(this->suma > suma){
