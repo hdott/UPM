@@ -1,6 +1,6 @@
 #pragma once
-// #ifndef CONTBANCAR_H
-// #define CONTBANCAR_H
+#ifndef CONTBANCAR_H
+#define CONTBANCAR_H
 #include <iostream>
 #include "Operatiuni.h"
 
@@ -28,4 +28,4 @@ class ContBancar:Operatiuni{
         void transfer(ContBancar& contDest, float suma);
 };
 
-// #endif
+#endif

@@ -1,8 +1,6 @@
 #pragma once
-// #ifndef OPERATIUNI_H
-// #define OPERATIUNI_H
-// #include "ContBancar.h"
-// class ContBancar;
+#ifndef OPERATIUNI_H
+#define OPERATIUNI_H
 
 class ContBancar;
 
@@ -20,4 +18,4 @@ class Operatiuni{
         virtual void transfer(ContBancar& contDest, float suma) = 0;
 };
 
-// #endif
+#endif

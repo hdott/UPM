@@ -1,6 +1,6 @@
 #pragma once
-// #ifndef CLIENT_H
-// #define CLIENT_H
+#ifndef CLIENT_H
+#define CLIENT_H
 #include <iostream>
 #include <vector>
 #include "ContBancar.h"
@@ -28,4 +28,4 @@ class Client{
         void addCont(ContBancar cont);
 };
 
-// #endif
+#endif

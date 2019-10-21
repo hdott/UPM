@@ -1,6 +1,6 @@
 #pragma once
-// #ifndef BANCA_H
-// #define BANCA_H
+#ifndef BANCA_H
+#define BANCA_H
 #include <iostream>
 #include <vector>
 #include "Client.h"
@@ -21,4 +21,4 @@ class Banca{
         inline void setCodBanca(std::string codBanca){this->codBanca = codBanca;}
 };
 
-// #endif
+#endif
