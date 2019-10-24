@@ -30,5 +30,5 @@ do
         echo $save > ./out.log
     fi
   
-    sleep 5
+    sleep 1
 done
