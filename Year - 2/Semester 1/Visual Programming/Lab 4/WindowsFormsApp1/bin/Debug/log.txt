@@ -1,0 +1,3 @@
+10/28/19 9:29:12:2912 Event: Loading http://www.google.ro/
+10/28/19 9:29:13:2913 Event: Loading https://www.google.ro/?gws_rd=ssl#spf=1572290953072
+Native library pre-loader is trying to load native SQLite library "C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 4\WindowsFormsApp1\bin\Debug\x86\SQLite.Interop.dll"...

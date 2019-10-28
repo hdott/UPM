@@ -19,6 +19,7 @@
             }
             base.Dispose(disposing);
             Logging.Instance.Dispose();
+            SQLiteHandler.Instance().DisconnectFromDb();
         }
 
         #region Windows Form Designer generated code
