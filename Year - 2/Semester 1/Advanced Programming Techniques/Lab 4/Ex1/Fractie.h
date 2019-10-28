@@ -16,8 +16,8 @@ class Fractie{
         // virtual Fractie inmultire(Fractie);
         // virtual Fractie impartire(Fractie);
         static int cmmdc(int, int);
-        virtual Fractie simplifica();
-        virtual Fractie reciproc();
+        Fractie simplifica();
+         Fractie reciproc();
         // virtual bool egal(const Fractie&);
         // virtual void print();
 
@@ -88,7 +88,7 @@ class Fractie{
         Fractie operator--(int n);
         template <typename T>
         operator T() const{
-            return (T) (numarator / numitor);
+            return (T) (double(numarator) / numitor);
         }
 
         bool operator<(const Fractie & fr) const;

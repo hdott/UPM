@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include "Fractie.h"
 
 
@@ -16,6 +17,16 @@ Fractie::Fractie(const Fractie& param){
 
 Fractie::~Fractie() {};
 
+// Fractie Fractie::fractToInt(double nr){
+//     double intpart, fract = nr;
+//     int result = 0, i;
+
+//     for( i=0; (fract = modf(fract, &intpart) != 0.0); ++i){
+//         result += int(intpart) * (10*i);
+//     }
+
+//     return Fractie(result, i);
+// }
 
 // Fractie Fractie::aduna(Fractie fract){
 //     int tmp_numarator,
@@ -98,6 +109,48 @@ Fractie Fractie::reciproc(){
 // void Fractie::print(){
 //     std::cout << this->numarator << "/" << this->numitor << std::endl;
 // }
+
+Fractie Fractie::operator+(const Fractie & fr) const{
+    int tmp_numarator,
+        tmp_numitor;
+
+    tmp_numarator = this->numarator * fr.numitor + 
+                    this->numitor * fr.numarator;
+    tmp_numitor = this->numitor * fr.numitor;
+
+    return Fractie(tmp_numarator, tmp_numitor);
+}
+
+Fractie Fractie::operator-(const Fractie & fr) const{
+    int tmp_numarator,
+    tmp_numitor;
+
+    tmp_numarator = this->numarator * fr.numitor - 
+                    this->numitor * fr.numarator;
+    tmp_numitor = this->numitor * fr.numitor;
+
+    return Fractie(tmp_numarator, tmp_numitor);
+}
+
+Fractie Fractie::operator*(const Fractie & fr) const{
+    int tmp_numarator,
+        tmp_numitor;
+
+    tmp_numarator = this->numarator * fr.numarator;
+    tmp_numitor = this->numitor * fr.numitor;
+
+    return Fractie(tmp_numarator, tmp_numitor);
+}
+
+Fractie Fractie::operator/(const Fractie & fr) const{
+    int tmp_numarator,
+        tmp_numitor;
+
+    tmp_numarator = this->numarator * fr.numitor;
+    tmp_numitor = this->numitor * fr.numarator;
+
+    return Fractie(tmp_numarator, tmp_numitor);
+}
 
 Fractie Fractie::operator=(const Fractie & fr){
     this->numitor = fr.numitor;
