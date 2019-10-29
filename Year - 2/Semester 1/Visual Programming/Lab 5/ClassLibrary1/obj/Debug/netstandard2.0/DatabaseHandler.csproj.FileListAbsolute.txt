@@ -1,0 +1,4 @@
+C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\bin\Debug\netstandard2.0\DatabaseHandler.deps.json
+C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\bin\Debug\netstandard2.0\DatabaseHandler.dll
+C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\obj\Debug\netstandard2.0\DatabaseHandler.AssemblyInfoInputs.cache
+C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\obj\Debug\netstandard2.0\DatabaseHandler.AssemblyInfo.cs
