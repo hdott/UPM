@@ -70,9 +70,37 @@ namespace WindowsFormsApp1
 
         private void webBrowser1_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
+            bool alreadyBlocked = false;
             if(list.Count != 0)
             {
                 foreach(string x in list){
+                    if (e.Url.ToString().Contains(x))
+                    {
+                        alreadyBlocked = true;
+                        e.Cancel = true;
+                        MessageBox.Show("This website has been blocked for you: " + e.Url,
+                            "Access Denied!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        break;
+                    }
+                }
+            }
+
+            bool wasOpen = false;
+            // check whether the db is already opened
+            if (SQLiteHandler.Instance.isOpen())
+            {
+                wasOpen = true;
+            }
+            else
+            {
+                SQLiteHandler.Instance.ConnectToDb();
+            }
+
+            List<string> dbList = SQLiteHandler.Instance.GetAllKeywords(false);
+            if (dbList.Count != 0)
+            {
+                foreach (string x in dbList)
+                {
                     if (e.Url.ToString().Contains(x))
                     {
                         e.Cancel = true;
@@ -83,7 +111,12 @@ namespace WindowsFormsApp1
                 }
             }
 
-            if(e.Cancel == true)
+            if (!wasOpen)
+            {
+                SQLiteHandler.Instance.DisconnectFromDb();
+            }
+
+            if (e.Cancel == true)
             {
                 logEvent("Loading BLOCKED " + e.Url);
             }
@@ -173,7 +206,7 @@ namespace WindowsFormsApp1
         {
             if(dbHandler != null)
             {
-                dbHandler.GetAllKeywords();
+                dbHandler.GetAllKeywords(true);
             }
             else
             {

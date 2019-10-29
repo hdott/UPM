@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        public void GetAllKeywords()
+        public List<string> GetAllKeywords(bool st)
         {
             string getKey = "SELECT * FROM Keywords";
             SQLiteCommand get = new SQLiteCommand(getKey, _conn);
@@ -100,17 +100,45 @@ namespace WindowsFormsApp1
                 data += reader.GetName(i) + "\t";
             }
             data += "\n";
+            List<string> list = new List<string>();
 
             //data += "DATA: \n";
             while (reader.Read())
             {
+                string tmp;
                 data += reader.GetInt32(0).ToString() + "\t";
-                data += reader.GetString(1);
+                data += (tmp = reader.GetString(1));
+                list.Add(tmp);
                 data += "\n";
             }
             reader.Close();
 
-            MessageBox.Show(data);
+            if (st)
+            {
+                MessageBox.Show(data);
+            }
+            
+            return list;
+        }
+
+        public bool isOpen()
+        {
+            if(_conn != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool isClose()
+        {
+            if(_conn == null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
