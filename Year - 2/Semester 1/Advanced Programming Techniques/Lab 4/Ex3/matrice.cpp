@@ -76,9 +76,9 @@ Matrice Matrice::operator*(const Matrice & matrix) const{
     Matrice tmp(row, matrix.col);
 
     for(int i = 0; i < row; ++i)
-        for(int j = 0; j < col; ++j)
-            for(int x = 0; x < row; ++x)
-                tmp[i][j] += *this[i][x] * matrix[x][j];
+        for(int j = 0; j < matrix.col; ++j)
+            for(int x = 0; x < col; ++x)
+                tmp[i][j] += vect[i][x] * matrix[x][j];
 
     return tmp;
 }
@@ -90,7 +90,7 @@ Matrice Matrice::operator+(const int n) const{
 
     for(int i = 0; i < row; ++i){
         for(int j = 0; j < col; ++j){
-            tmp[i][j] += n;
+            tmp[i][j] = vect[i][j] + n;
         }
     }
 
@@ -102,7 +102,7 @@ Matrice Matrice::operator-(const int n) const{
 
     for(int i = 0; i < row; ++i){
         for(int j = 0; j < col; ++j){
-            tmp[i][j] -= n;
+            tmp[i][j] = vect[i][j] - n;
         }
     }
 
@@ -114,7 +114,7 @@ Matrice Matrice::operator*(const int n) const{
 
     for(int i = 0; i < row; ++i){
         for(int j = 0; j < col; ++j){
-            tmp[i][j] *= n;
+            tmp[i][j] = vect[i][j] * n;
         }
     }
 
@@ -126,7 +126,7 @@ Matrice Matrice::operator/(const int n) const{
 
     for(int i = 0; i < row; ++i){
         for(int j = 0; j < col; ++j){
-            tmp[i][j] /= n;
+            tmp[i][j] = vect[i][j] / n;
         }
     }
 
@@ -140,19 +140,19 @@ Matrice Matrice::operator/(const int n) const{
 // bool Matrice::operator>=(const Matrice &) const;
         
 bool Matrice::operator!=(const Matrice & m) const{
-    if(row == m.row || col == m.col){
-        return false;
+    if(row != m.row || col != m.col){
+        return true;
     }
 
     for(int i = 0; i < row; ++i){
         for(int j = 0; j < col; ++j){
-            if(*this[i][j] == m[i][j]){
-                return false;
+            if(vect[i][j] != m[i][j]){
+                return true;
             }
         }
     }
 
-    return true;
+    return false;
 }
 
 bool Matrice::operator==(const Matrice & m) const{
@@ -162,7 +162,7 @@ bool Matrice::operator==(const Matrice & m) const{
 
     for(int i = 0; i < row; ++i){
         for(int j = 0; j < col; ++j){
-            if(*this[i][j] != m[i][j]){
+            if(vect[i][j] != m[i][j]){
                 return false;
             }
         }
@@ -171,40 +171,41 @@ bool Matrice::operator==(const Matrice & m) const{
     return true;
 }
     
-Matrice Matrice::operator+=(const Matrice & m) const{
-    return *this + m;
+Matrice & Matrice::operator+=(const Matrice & m){
+
+    return (*this = *this + m);
 }
 
-Matrice Matrice::operator-=(const Matrice & m) const{
-    return *this - m;
+Matrice & Matrice::operator-=(const Matrice & m){
+    return (*this = *this - m);
 }
 
-Matrice Matrice::operator*=(const Matrice & m) const{
-    return *this * m;
+Matrice & Matrice::operator*=(const Matrice & m){
+    return (*this = *this * m);
 }
 
 // Matrice operator/=(const Matrice &) const;
 
-Matrice Matrice::operator+=(const int n) const{
-    return *this + n;
+Matrice & Matrice::operator+=(const int n){
+    return (*this = *this + n);
 }
 
-Matrice Matrice::operator-=(const int n) const{
-    return *this - n;
+Matrice & Matrice::operator-=(const int n){
+    return (*this = *this - n);
 }
 
-Matrice Matrice::operator*=(const int n) const{
-    return *this * n;
+Matrice & Matrice::operator*=(const int n){
+    return (*this = *this * n);
 }
         
-Matrice Matrice::operator/=(const int n) const{
-    return *this / n;
+Matrice & Matrice::operator/=(const int n){
+    return (*this = *this / n);
 }
 
 Matrice Matrice::operator++(){
     for(int i = 0; i < row; ++i){
         for(int j = 0; j < col; ++j){
-            ++(*this[i][j]);
+            ++vect[i][j];
         }
     }
 
@@ -217,13 +218,13 @@ Matrice Matrice::operator++(int n){
     if(n == 0){
         for(int i = 0; i < row; ++i){
             for(int j = 0; j < col; ++j){
-                (*this[i][j])++;
+                vect[i][j]++;
             }
         }
     } else{
         for(int i = 0; i < row; ++i){
             for(int j = 0; j < col; ++j){
-                (*this[i][j]) += n;
+                (vect[i][j]) += n;
             }
         }
     }
@@ -234,7 +235,7 @@ Matrice Matrice::operator++(int n){
 Matrice Matrice::operator--(){
     for(int i = 0; i < row; ++i){
         for(int j = 0; j < col; ++j){
-            --(*this[i][j]);
+            --(vect[i][j]);
         }
     }
 
@@ -247,13 +248,13 @@ Matrice Matrice::operator--(int n){
     if(n == 0){
         for(int i = 0; i < row; ++i){
             for(int j = 0; j < col; ++j){
-                (*this[i][j])--;
+                (vect[i][j])--;
             }
         }
     } else{
         for(int i = 0; i < row; ++i){
             for(int j = 0; j < col; ++j){
-                (*this[i][j]) -= n;
+                (vect[i][j]) -= n;
             }
         }
     }
@@ -261,15 +262,15 @@ Matrice Matrice::operator--(int n){
     return tmp;
 }
 
-Matrice Matrice::operator=(const Matrice & m){
-    if(row != m.row || col != m.col){
-        std::cerr << "ERR [Matrix Assignment]" << std::endl;
-        std::cerr << "\tMatrix Assignment requires for both matrices to have" 
-                << " the same dimension m1(m X n) m2(m x n)"
-                << std::endl;
+Matrice & Matrice::operator=(const Matrice & m){
+    // if(row != m.row || col != m.col){
+    //     std::cerr << "ERR [Matrix Assignment]" << std::endl;
+    //     std::cerr << "\tMatrix Assignment requires for both matrices to have" 
+    //             << " the same dimension m1(m X n) m2(m x n)"
+    //             << std::endl;
 
-        exit(EXIT_FAILURE);
-    }
+    //     exit(EXIT_FAILURE);
+    // }
 
     for(int i = 0; i < row; ++i){
         delete[] vect[i];
@@ -310,7 +311,15 @@ Matrice operator+(const int n, const Matrice & m){
 }
 
 Matrice operator-(const int n, const Matrice & m){
-    return m - n;
+    Matrice tmp(m.row, m.col);
+
+    for(int i = 0; i < m.row; ++i){
+        for(int j = 0; j < m.col; ++j){
+            tmp[i][j] = n - m.vect[i][j];
+        }
+    }
+
+    return tmp;
 }
 
 Matrice operator*(const int n, const Matrice & m){

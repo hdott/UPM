@@ -13,6 +13,9 @@ class Matrice{
             vect = new int*[row];
             for(int i = 0; i < row; ++i){
                 vect[i] = new int[col];
+                
+                // instantiate row to 0
+                vect[i][0] = {0};
             }
         };
         Matrice(const Matrice &);
@@ -32,19 +35,19 @@ class Matrice{
         // bool operator>=(const Matrice &) const;
         bool operator!=(const Matrice &) const;
         bool operator==(const Matrice &) const;
-        Matrice operator+=(const Matrice &) const;
-        Matrice operator-=(const Matrice &) const;
-        Matrice operator*=(const Matrice &) const;
-        Matrice operator/=(const Matrice &) const;
-        Matrice operator+=(const int) const;
-        Matrice operator-=(const int) const;
-        Matrice operator*=(const int) const;
-        Matrice operator/=(const int) const;
+        Matrice & operator+=(const Matrice &);
+        Matrice & operator-=(const Matrice &);
+        Matrice & operator*=(const Matrice &);
+        // Matrice & operator/=(const Matrice &);
+        Matrice & operator+=(const int);
+        Matrice & operator-=(const int);
+        Matrice & operator*=(const int);
+        Matrice & operator/=(const int);
         Matrice operator++();
         Matrice operator++(int);
         Matrice operator--();
         Matrice operator--(int);
-        Matrice operator=(const Matrice &);
+        Matrice & operator=(const Matrice &);
         int* operator[](int) const;
 
         // friend Matrice operator+(const Matrice &, const Matrice &);
