@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 
 typedef struct Edge{
@@ -68,6 +69,12 @@ int removeEdge(Graph *g, int x, int y){
     return as;
 }
 
+void printGraph(Graph *g){
+    for(int i = 0; i < g->E; ++i){
+        printf("%d - %d\n", g->edges[i].x, g->edges[i].y);
+    }
+}
+
 void deleteGraph(Graph *g){
     free(g->edges);
     free(g);
@@ -89,7 +96,7 @@ static AdjList* initAdjList(const Graph *g){
 AdjList* createAdjList(const Graph *g){
     AdjList *adj = initAdjList(g);
 
-    for(int i = 0; i < adj->V; ++i){
+    for(int i = 0; i < g->E; ++i){
         int x = g->edges[i].x;
         int y = g->edges[i].y;
 
@@ -155,7 +162,42 @@ AdjMatrix* createAdjMatrix(const Graph *g){
     return matrix;
 }
 
-AdjMatrix* createAdjMatrixFromArr(int V, const int **arr){
+static int** readArr(int *V){
+    printf("Enter the number of Vertices: ");
+        scanf("%d", V);
+        getchar();
+    int **arr = (int**) malloc(*V * sizeof(int*));
+    for(int i = 0; i < *V; ++i){
+        arr[i] = malloc(*V * sizeof(int));
+    }
+    
+    printf("Enter the Matrix:\n");
+    for(int i = 0; i < *V; ++i){
+        printf("[%d] [0] ", i);
+        for(int j = 0; j < *V; ++j){
+            if(j){
+                printf("    [%d] ", j);
+            }
+            scanf("%d", &arr[i][j]);
+            getchar();
+        }
+        putchar('\n');
+    }
+
+    return arr;
+}
+
+static void freeArr(int **arr, int V){
+    for(int i = 0; i < V; ++i){
+        free(arr[i]);
+    }
+    free(arr);
+}
+
+AdjMatrix* createAdjMatrixFromArr(void){
+    int V = 0;
+    int **arr = readArr(&V);
+    
     AdjMatrix *matrix = initAdjMatrix(V);
     matrix->V = V;
     for(int i = 0; i < V; ++i){
@@ -164,6 +206,7 @@ AdjMatrix* createAdjMatrixFromArr(int V, const int **arr){
         }
     }
 
+    freeArr(arr, V);
     return matrix;
 }
 
@@ -217,4 +260,280 @@ Graph* createGraphFromAdjMatrix(const AdjMatrix *matrix){
     }
 
     return g;
+}
+
+
+static void DFSu(AdjList *adj, int *arr, int node, int *count){
+    arr[node] = 1;
+    *count += 1;
+    printf("%d ", node);
+
+    AdjListNode *tracer = adj->head[node];
+    while(tracer){
+        if(!arr[tracer->y]){
+            DFSu(adj, arr, tracer->y, count);
+        }
+        tracer = tracer->next;
+    }
+}
+
+int DFS(Graph *g, int node){
+    AdjList *adj = createAdjList(g);
+    int *arr = (int*) calloc(sizeof(int), g->V);
+    // printAdjList(adj);
+
+    int count = 0;
+    DFSu(adj, arr, node, &count);
+    putchar('\n');
+
+    free(arr);
+    deleteAdjList(adj);
+
+    return count;
+}
+
+int findGradeOfNode(Graph *g, int node){
+    AdjList *adj = createAdjList(g);
+
+    int count = 0;
+    AdjListNode *tracer = adj->head[node];
+    while(tracer){
+        count++;
+        tracer = tracer->next;
+    }
+
+    deleteAdjList(adj);
+    return count;
+}
+
+
+typedef struct Queue{
+    int x;
+    struct Queue *next;
+} Queue;
+
+typedef struct QLimits{
+    Queue *head;
+    Queue *tail;
+} QLimits;
+
+static QLimits* createQueue(void){
+    QLimits *ql = (QLimits*) malloc(sizeof(QLimits));
+    ql->head = NULL;
+    ql->tail = NULL;
+
+    return ql;
+}
+
+static Queue* newQNode(int x){
+    Queue *node = (Queue*) malloc(sizeof(Queue));
+    node->x = x;
+    node->next = NULL;
+
+    return node;
+}
+
+static void Enqueue(QLimits *ql, Queue *q){
+    if(!ql->head){
+        ql->head = ql->tail = q;
+    } else{
+        ql->tail = ql->tail->next = q;
+    }
+}
+
+static int Dequeue(QLimits *ql){
+    if(!ql->head){
+        return -1;
+    } else{
+        int x = ql->head->x;
+        Queue *_toDelete = ql->head;
+        ql->head = ql->head->next;
+        
+        free(_toDelete);
+        return x;
+    }
+}
+
+static int isEmptyQ(QLimits *ql){
+    if(!ql->head){
+        return 1;
+    }
+    return 0;
+}
+
+static void deleteQueue(QLimits *ql){
+    Queue *tracer = ql->head,
+            *_toDelete;
+    
+    while(tracer){
+        _toDelete = tracer;
+        tracer = tracer->next;
+        free(_toDelete);
+    }
+    free(ql);
+}
+
+static void BFSu(AdjList *adj, QLimits *ql, int *arr, int node){
+    arr[node] = 1;
+    Enqueue(ql, newQNode(node));
+    
+    while(!isEmptyQ(ql)){
+        int x = Dequeue(ql);
+        AdjListNode *tracer = adj->head[x];
+        printf("%d ", x);
+        
+        while(tracer){
+            if(!arr[tracer->y]){
+                arr[tracer->y] = 1;
+                Enqueue(ql, newQNode(tracer->y));
+            }
+            tracer = tracer->next;
+        }
+    }
+}
+
+void BFS(Graph *g, int node){
+    AdjList *adj = createAdjList(g);
+    QLimits *ql = createQueue();
+    int *arr = (int*) calloc(sizeof(int), g->V);
+    // printAdjList(adj);
+
+    BFSu(adj, ql, arr, node);
+    putchar('\n');
+
+    deleteAdjList(adj);
+    free(arr);
+    deleteQueue(ql);
+}
+
+
+int isConnected(Graph *g){
+    if(DFS(g, 0) == g->V){
+        return 1;
+    }
+
+    return 0;
+}
+
+
+static void printSubG(AdjList *adj, int *arr, int node){
+    arr[node] = 1;
+    printf("%d ", node);
+}
+
+int findSubGraphUnconnected(Graph *g){
+    AdjList *adj = createAdjList(g);
+    int *arr = (int*) calloc(sizeof(int), g->V);
+    // printAdjList(adj);
+
+    int count = 0;
+    for(int i = 0; i < g->V; ++i){
+        int _tmp = 0;
+        if(!arr[i]){
+            DFSu(adj, arr, i, &_tmp);
+            putchar('\n');
+            count++;
+        }
+    }
+
+    free(arr);
+    deleteAdjList(adj);
+    return count;
+}
+
+
+static void DFSut(AdjList *adj, int *arr, int node){
+    arr[node] = 1;
+
+    AdjListNode *tracer = adj->head[node];
+    while(tracer){
+        if(!arr[tracer->y]){
+            DFSut(adj, arr, tracer->y);
+        }
+        tracer = tracer->next;
+    }
+}
+
+int it1 = 0;
+
+static int addEdgeC(Graph *g, int x, int y){
+    if(it1 >= g->E){
+        return 0;
+    }
+
+    g->edges[it1].x = x;
+    g->edges[it1].y = y;
+    ++it1;
+    
+    return 1;
+}
+
+Graph* connectUnconnectedG(Graph *g){
+    AdjList *adj = createAdjList(g);
+    int *arr = (int*) calloc(sizeof(int), g->V);
+    // printAdjList(adj);
+
+    int count = 0;
+    for(int i = 0; i < g->V; ++i){
+        int _tmp = 0;
+        if(!arr[i]){
+            DFSut(adj, arr, i);
+            count++;
+        }
+    }
+
+    Graph *gResult = initGraph(g->V, g->E + (count-1));
+    for(int i = 0; i < g->E; ++i){
+        addEdgeC(gResult, g->edges[i].x, g->edges[i].y);
+    }
+
+    // reset arr back to 0
+    for(int i = 0; i < g->V; ++i){
+        arr[i] = 0;
+    }
+
+    for(int i = 0; i < g->V; ++i){
+        int _tmp = 0;
+        if(!arr[i]){
+            if(i){
+                addEdgeC(gResult, 0, i);
+            }
+            DFSut(adj, arr, i);
+        }
+    }
+
+    free(arr);
+    deleteAdjList(adj);
+
+    return gResult;
+}
+
+
+static void DFSuS(AdjList *adj, int *arr, int node){
+    arr[node] = 1;
+    printf("%d ", node);
+
+    AdjListNode *tracer = adj->head[node];
+    while(tracer){
+        if(!arr[tracer->y]){
+            DFSuS(adj, arr, tracer->y);
+        }
+        tracer = tracer->next;
+    }
+}
+
+
+void printSubGraphOfConnectedG(Graph *g){
+    AdjList *adj = createAdjList(g);
+    srand((unsigned int) time(0));
+    int *arr = (int*) calloc(sizeof(int), g->V);
+    int x = random() % g->V;
+    arr[x] = 1;
+    // printAdjList(adj);
+    
+    DFSuS(adj, arr, (g->V + (2 * x)) % g->V);
+    putchar('\n');
+
+    free(arr);
+    deleteAdjList(adj);
 }
