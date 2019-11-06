@@ -218,6 +218,9 @@ static void opt6(Graph *g){
     if(!is){
         printf("\nSubGrafurile sunt:\n");
         printf("Au fost gasite %d SubGrafuri\n", findSubGraphUnconnected(g));
+        Graph *tmp = connectUnconnectedG(g);
+        printGraph(tmp);
+        deleteGraph(tmp);
     } else{
         printf("\nUn SubGraf este:\n");
         printSubGraphOfConnectedG(g);
