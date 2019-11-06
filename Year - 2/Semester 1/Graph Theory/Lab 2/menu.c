@@ -71,7 +71,9 @@ void menu(Graph *g){
             opt6(g);
             break;
         case 7:
-            deleteGraph(g);
+            if(g){
+                deleteGraph(g);
+            }
             exit(EXIT_SUCCESS);
             break;
         default:
