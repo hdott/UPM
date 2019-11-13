@@ -1,17 +1,16 @@
 #!/bin/bash
 
-echo "[$1] "
-list=$(ps -eo pid,ppid,user,euid)
-#echo $list
-pid=$(echo $$)
-pgrep -f ./child.sh
-for value in $list
-do
-    echo $value
-    if test $($value | awk '{print $1}') = $(echo $$)
-    then
-        echo "am gasit"
-    fi
-    sleep 2
-done
-echo $(ps -eo pid,ppid,user,euid | awk '{print $1}')
+#indexul procesului lansat
+index=$1
+
+#pid ppid user euid
+value=$(ps -q $$ -o pid,ppid,user,euid)
+set $value
+pid=$5
+ppid=$6
+user=$7
+euid=$8
+
+echo "[$index] PID: $pid   PPID: $ppid   USER: $user   ID: $euid"
+
+exit $(( RANDOM % 255))
