@@ -123,8 +123,8 @@ int main(int argc, char **argv){
             printMRMatrix(C, 'C');
             break;
         case 'h':
-            printMatriceRaraH(A);
-            printMatriceRaraH(B);
+            // printMatriceRaraH(A);
+            // printMatriceRaraH(B);
             printMatriceRaraH(C);
             break;
         case 'v':
@@ -132,9 +132,9 @@ int main(int argc, char **argv){
             break;
         case 0:
         case 'a':
-            printMatriceRaraH(A);
-            printMatriceRaraH(B);
-            printMatriceRaraH(C);
+            // printMatriceRaraH(A);
+            // printMatriceRaraH(B);
+            // printMatriceRaraH(C);
             printAddMR(A, B, C);
             break;
     }
