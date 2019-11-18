@@ -29,7 +29,7 @@ int main(void){
 
     char vect[10] {'a', 'z', 'y', 'm', 'c', 'd', 't', 'o', 'g', 'e'};
     std::cout << "Bubble Sort: ";
-    bubbleSort(10, vect);
+    bubbleSort<char>(10, vect);
     printVector(10, vect);
     std::cout << "Reverse Sort: ";
     reverseSort(10, vect);

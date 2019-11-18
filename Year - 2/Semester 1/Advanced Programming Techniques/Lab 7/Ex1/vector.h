@@ -81,13 +81,12 @@ namespace Vector{
         }
     }
 
-    template <typename T>
-    void reverseSort(int size, T vector[]){
+    void reverseSort(int size, char vector[]){
         for(int i=0; i<size-1; ++i){
             for(int j=0; j<size-i-1; ++j){
                 if(vector[j] < vector[j+1])
                 {
-                    T aux = vector[j];
+                    char aux = vector[j];
                     vector[j] = vector[j+1];
                     vector[j+1] = aux;
                 }
