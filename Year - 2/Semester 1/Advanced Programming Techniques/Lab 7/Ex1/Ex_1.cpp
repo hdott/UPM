@@ -32,7 +32,7 @@ int main(void){
     bubbleSort<char>(10, vect);
     printVector(10, vect);
     std::cout << "Reverse Sort: ";
-    reverseSort(10, vect);
+    bubbleSort(10, vect);
     printVector(10, vect);
 
     return 0;
