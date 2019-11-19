@@ -10,32 +10,21 @@ using PostingNews.ViewModels;
 
 namespace PostingNews.Controllers
 {
-    public class HomeController : Controller
+    public class PostController : Controller
     {
         private readonly IPostRepository _postRepository;
 
-        public HomeController(IPostRepository postRepository)
+        public PostController(IPostRepository postRepository)
         {
             _postRepository = postRepository;
         }
-
         // GET: /<controller>/
         public IActionResult Index()
         {
             var posts = _postRepository.GetAllPosts();
-            HomeViewModel homeViewModel = new HomeViewModel();
-            homeViewModel.Title = "Titlu";
-            homeViewModel.Posts = posts.ToList();
-
-            //ViewBag.Title = "Posting news overview";
-            //
-            return View(homeViewModel);
-        }
-
-        public IActionResult Details(int id)
-        {
-            var detail = _postRepository.GetPostById(id);
-            return View(detail);
+            var postViewModel = new PostViewModel();
+            postViewModel.Posts = posts.OrderByDescending(o => o.DATEADD).ToList();
+            return View(postViewModel);
         }
     }
 }

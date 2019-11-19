@@ -1,16 +1,36 @@
-﻿<h2>@ViewBag.Title</h2>
+﻿
+@model PostingNews.ViewModels.HomeViewModel
 
-@model IEnumerable<PostingNews.Models.Post>
-<body>
-    @foreach (var post in Model)
+@{Layout = "_Layout"; }
+<h2>
+    @Model.Title
+</h2>
+
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+        <button class="btn btn-outline-success" type="button">Home</button>
+        <button class="btn btn-outline-success" type="button">Latest News</button>
+    </form>
+</nav>
+
+<div class="list-group">
+
+    @foreach(var post in Model.Posts)
     {
-        <div>
-            <h2>@post.TITLE</h2>
-            <h3>@post.DESCRIPTION</h3>
-        </div>}
-</body>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">@post.TITLE</h5>
+        <small>@post.DATEADD</small>
+    </div>
+    <p class="mb-1">@post.DESCRIPTION</p>
+            </a>
+    }
 
-@model PostingNews.Models.Post
-@Html.TextBox("Id", null, new { @class = "form-control" })
-<button type="submit">Subscribe</button>
-}
+
+    
+</div>
+
+    @*@model PostingNews.Models.Post
+        @Html.TextBox("Id", null, new { @class = "form-control" })
+        <button type="submit">Subscribe</button>
+        }*@
