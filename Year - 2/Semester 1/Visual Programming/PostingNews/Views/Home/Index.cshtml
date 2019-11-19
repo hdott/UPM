@@ -1,0 +1,16 @@
+﻿<h2>@ViewBag.Title</h2>
+
+@model IEnumerable<PostingNews.Models.Post>
+<body>
+    @foreach (var post in Model)
+    {
+        <div>
+            <h2>@post.TITLE</h2>
+            <h3>@post.DESCRIPTION</h3>
+        </div>}
+</body>
+
+@model PostingNews.Models.Post
+@Html.TextBox("Id", null, new { @class = "form-control" })
+<button type="submit">Subscribe</button>
+}
