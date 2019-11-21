@@ -37,7 +37,7 @@ int main(int argc, char **argv){
                     
                     printf("@CHILD PID: %u - PPID: %u - UID: %u - GUID: %u\n", getpid(), getppid(),
                                                                         getuid(), getgid());
-                    // sleep(2);
+                    while(1);
                     break;
                 }
                 // wait(&status);
