@@ -1,5 +1,2 @@
-10/29/19 11:02:53:253 Event: Loading http://www.google.ro/
-10/29/19 11:02:54:254 Event: Loading https://www.google.ro/?gws_rd=ssl#spf=1572339774511
-10/29/19 11:03:11:311 Event: Loading BLOCKED https://www.google.ro/search?source=hp&ei=PwC4XZr4BLKvmwWgu4y4Dg&q=github&oq=github&gs_l=psy-ab.3..0i131l3j0j0i131j0l3j0i131l2.12918.13440..14525...0.0..0.390.390.3-1......0....1..gws-wiz.....0.QxZhmPJP278&ved=0ahUKEwjak4qOjsHlAhWy16YKHaAdA-cQ4dUDCAo&uact=5
-10/29/19 11:03:30:330 Event: Button pressed [Navigate]
-10/29/19 11:03:33:333 Event: Loading BLOCKED http://umfst.ro/
+11/26/19 1:01:18:118 Event: Loading http://www.google.ro/
+11/26/19 1:01:21:121 Event: Loading https://www.google.ro/?gws_rd=ssl#spf=1574722879336
