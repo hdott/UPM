@@ -38,11 +38,17 @@ int main(int argc, char **argv){
                     printf("@CHILD PID: %u - PPID: %u - UID: %u - GUID: %u\n", getpid(), getppid(),
                                                                         getuid(), getgid());
                     sleep(2);
+                    return i+1;
                     break;
                 }
-                wait(&status);
+                pid_t pid = wait(&status);
+                printf("Wait [%d] -> %u\t%u\n", i, pid, WEXITSTATUS(status));
+
             }
-            // wait(&status);
+            pid_t pid;
+            while((pid = wait(&status)) != -1){
+                printf("Inca exista CHILD activ!\n");
+            }
         }
     }
 

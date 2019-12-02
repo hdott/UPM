@@ -12,5 +12,6 @@ user=$7
 euid=$8
 
 echo "[$index] PID: $pid   PPID: $ppid   USER: $user   ID: $euid"
+sleep 2
 
 exit $(( RANDOM % 255))
