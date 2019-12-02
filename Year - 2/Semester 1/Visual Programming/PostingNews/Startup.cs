@@ -27,18 +27,14 @@ namespace PostingNews
             app.UseStatusCodePages();
             app.UseStaticFiles();
             //app.UseMvcWithDefaultRoute();
-            app.UseMvc(routes => {
+            app.UseMvc(routes =>
+            {
                 routes.MapRoute(
-                name: "default",
-                template: "{controller=Home}/{action=Index}/{id?}");
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-
-            app.Run(async (context) =>  
+            app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");
             });

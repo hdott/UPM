@@ -22,20 +22,25 @@ namespace PostingNews.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var posts = _postRepository.GetAllPosts();
-            HomeViewModel homeViewModel = new HomeViewModel();
-            homeViewModel.Title = "Titlu";
-            homeViewModel.Posts = posts.ToList();
+            ViewBag.Title = "Posting news overview";
+            //var posts = _postRepository.GetAllPosts();
 
-            //ViewBag.Title = "Posting news overview";
-            //
+            //return View(posts);
+            var posts = _postRepository.GetAllPosts();
+            var homeViewModel = new HomeViewModel()
+            {
+                Title = "News",
+                Posts = posts.ToList()
+            };
+
             return View(homeViewModel);
         }
 
         public IActionResult Details(int id)
         {
-            var detail = _postRepository.GetPostById(id);
-            return View(detail);
+            var post = _postRepository.GetPostById(id);
+
+            return View(post);
         }
     }
 }

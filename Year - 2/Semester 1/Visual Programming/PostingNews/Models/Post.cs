@@ -7,29 +7,11 @@ namespace PostingNews.Models
 {
     public class Post
     {
-        int Id;
-        string Title;
-        string url;
-        string Description;
-        string User;
-        DateTime DateAdded;
-
-        public Post(int id, string title, string URL, string descr, string user, DateTime date)
-        {
-            Id = id;
-            Title = title;
-            url = URL;
-            Description = descr;
-            User = user;
-            DateAdded = date;
-        }
-
-        public int ID { get { return Id; } set { Id = value; } }
-        public string TITLE { get { return Title; } set { Title = value; } }
-        public string URL{ get { return url; } set { url = value; } }
-        public string USER { get { return User; } set { User = value; } }
-        public string DESCRIPTION { get { return Description; } set { Description = value; } }
-        public DateTime DATEADD{ get { return DateAdded; } set { DateAdded = value; } }
-
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string URL { get; set; }
+        public string Description { get; set; }
+        public string User { get; set; }
+        public DateTime DateAdded { get; set; }
     }
 }

@@ -1,36 +1,50 @@
-﻿
+﻿@*@model IEnumerable<PostingNews.Models.Post>*@
 @model PostingNews.ViewModels.HomeViewModel
 
-@{Layout = "_Layout"; }
-<h2>
-    @Model.Title
-</h2>
 
-<nav class="navbar navbar-light bg-light">
-    <form class="form-inline">
-        <button class="btn btn-outline-success" type="button">Home</button>
-        <button class="btn btn-outline-success" type="button">Latest News</button>
-    </form>
-</nav>
+<h2>@ViewBag.Title</h2>
+@*@foreach(var post in Model.Posts)
+{
+    <div>
+        <h2>@Model.Title</h2>
+        <h3>@post.Description</h3>
+    </div>
+}*@
 
 <div class="list-group">
-
-    @foreach(var post in Model.Posts)
+    @foreach (var post in Model.Posts)
     {
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">@post.TITLE</h5>
-        <small>@post.DATEADD</small>
-    </div>
-    <p class="mb-1">@post.DESCRIPTION</p>
-            </a>
+        <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">@post.Title</h5>
+                <small>@post.DateAdded</small>
+            </div>
+            <p class="mb-1">@post.Description</p>
+            <small>@post.User</small>
+        </a>
     }
-
-
-    
+    @*<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small>3 days ago</small>
+        </div>
+        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <small>Donec id elit non mi porta.</small>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small class="text-muted">3 days ago</small>
+        </div>
+        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <small class="text-muted">Donec id elit non mi porta.</small>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small class="text-muted">3 days ago</small>
+        </div>
+        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <small class="text-muted">Donec id elit non mi porta.</small>
+    </a>*@
 </div>
-
-    @*@model PostingNews.Models.Post
-        @Html.TextBox("Id", null, new { @class = "form-control" })
-        <button type="submit">Subscribe</button>
-        }*@

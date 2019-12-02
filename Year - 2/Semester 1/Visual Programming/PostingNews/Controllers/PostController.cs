@@ -18,12 +18,40 @@ namespace PostingNews.Controllers
         {
             _postRepository = postRepository;
         }
+
         // GET: /<controller>/
         public IActionResult Index()
         {
+            ViewBag.Title = "Posting news overview";
+            //var posts = _postRepository.GetAllPosts();
+
+            //return View(posts);
             var posts = _postRepository.GetAllPosts();
-            var postViewModel = new PostViewModel();
-            postViewModel.Posts = posts.OrderByDescending(o => o.DATEADD).ToList();
+            var homeViewModel = new HomeViewModel()
+            {
+                Title = "News",
+                Posts = posts.ToList()
+            };
+
+            return View(homeViewModel);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var post = _postRepository.GetPostById(id);
+
+            return View(post);
+        }
+
+        public IActionResult LatestNews()
+        {
+            var posts = _postRepository.GetAllPosts();
+            var postViewModel = new PostViewModel()
+            {
+                Title = "News",
+                Posts = posts.OrderByDescending(x => x.DateAdded).ToList()
+            };
+
             return View(postViewModel);
         }
     }

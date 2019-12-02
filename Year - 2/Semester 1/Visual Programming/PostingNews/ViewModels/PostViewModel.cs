@@ -10,7 +10,5 @@ namespace PostingNews.ViewModels
     {
         public string Title { get; set; }
         public List<Post> Posts { get; set; }
-        //public string URL { get; set; }
-        //public string Description { get; set; }
     }
 }

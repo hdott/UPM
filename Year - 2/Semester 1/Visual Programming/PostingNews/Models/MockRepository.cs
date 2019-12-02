@@ -7,43 +7,47 @@ namespace PostingNews.Models
 {
     public class MockRepository : IPostRepository
     {
-        List<Post> _posts;
+        public List<Post> list { get; set; }
 
         public MockRepository()
         {
-            if(_posts == null)
+            if(list == null)
             {
                 InitializePosts();
             }
         }
-        IEnumerable<Post> IPostRepository.GetAllPosts()
-        {
-            return _posts.AsEnumerable();
-            throw new NotImplementedException();
-        }
-
-       
-        Post IPostRepository.GetPostById(int postId)
-        {
-            foreach(Post x in _posts)
-            {
-                if(x.ID == postId)
-                {
-                    return x;
-                }
-            }
-            throw new NotImplementedException();
-        }
 
         void InitializePosts()
         {
-            _posts = new List<Post>();
-            _posts.Add(new Post(1,
-                                "Why Aren't there C Conferences?",
-                                "https://nullprogram.com/blog/2018/11/21/",
-                                "Most widely-used programming languages have at least one regular conference dedicated to discussing it.",
-                                "alma",
-                                new DateTime(2018, 11, 22)));
+            list = new List<Post>();
+            list.Add(new Post
+            {
+                Id = 1,
+                Title = "Why Aren't There C Conferences?",
+                URL = "https://nullprogram.com/blog/2018/11/21/",
+                Description = "Most widely-used programming languages have at least one regular conference dedicated to discussing it.",
+                DateAdded = new DateTime(2018, 11, 22),
+                User = "alma"
+            });
+        }
+
+        public IEnumerable<Post> GetAllPosts()
+        {
+            return list.AsEnumerable();
+            //throw new NotImplementedException();
+        }
+
+        public Post GetPostById(int postId)
+        {
+            foreach (Post post in list)
+            {
+                if (post.Id == postId)
+                {
+                    return post;
+                }
+            }
+            return null;
+            //throw new NotImplementedException();
         }
     }
 }
