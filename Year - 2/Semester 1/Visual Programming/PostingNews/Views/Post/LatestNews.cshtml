@@ -1,11 +1,12 @@
 ﻿@model PostViewModel
+@{ Layout = "_Layout";}
 
 <h2>@ViewBag.Title</h2>
 
 <div class="list-group">
     @foreach (var post in Model.Posts)
     {
-        <a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">@post.Title</h5>
                 <small>@post.DateAdded</small>

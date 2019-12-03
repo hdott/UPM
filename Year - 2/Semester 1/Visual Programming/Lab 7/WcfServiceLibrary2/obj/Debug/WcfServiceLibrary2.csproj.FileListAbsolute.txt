@@ -1,0 +1,6 @@
+C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 7\WcfServiceLibrary2\bin\Debug\WcfServiceLibrary2.dll.config
+C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 7\WcfServiceLibrary2\bin\Debug\WcfServiceLibrary2.dll
+C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 7\WcfServiceLibrary2\bin\Debug\WcfServiceLibrary2.pdb
+C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 7\WcfServiceLibrary2\obj\Debug\WcfServiceLibrary2.csprojAssemblyReference.cache
+C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 7\WcfServiceLibrary2\obj\Debug\WcfServiceLibrary2.dll
+C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 7\WcfServiceLibrary2\obj\Debug\WcfServiceLibrary2.pdb

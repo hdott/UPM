@@ -54,5 +54,30 @@ namespace PostingNews.Controllers
 
             return View(postViewModel);
         }
+
+        [HttpPost]
+        public IActionResult AddNewPost(Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                post.DateAdded = DateTime.Now;
+                post.User = "anna";
+                _postRepository.AddNewPost(post);
+                return RedirectToAction("AddNewPostComplete");
+            }
+            else
+            {
+                return View(post);
+            }
+            //return View();
+        }
+        public IActionResult AddNewPostComplete()
+        {
+            return View();
+        }
+        public IActionResult AddNewPost()
+        {
+            return View();
+        }
     }
 }

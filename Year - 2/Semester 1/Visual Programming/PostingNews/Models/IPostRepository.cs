@@ -9,5 +9,6 @@ namespace PostingNews.Models
     {
         IEnumerable<Post> GetAllPosts();
         Post GetPostById(int postId);
+        void AddNewPost(Post post);
     }
 }

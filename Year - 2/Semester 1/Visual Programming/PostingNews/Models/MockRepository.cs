@@ -29,6 +29,15 @@ namespace PostingNews.Models
                 DateAdded = new DateTime(2018, 11, 22),
                 User = "alma"
             });
+            list.Add(new Post
+            {
+                Id = 2,
+                Title = "Why Aren't There C Conferences?.2",
+                URL = "https://nullprogram.com/blog/2018/11/21/",
+                Description = "Most widely-used programming languages have at least one regular conference dedicated to discussing it.",
+                DateAdded = new DateTime(2019, 11, 22),
+                User = "alma"
+            });
         }
 
         public IEnumerable<Post> GetAllPosts()
@@ -48,6 +57,11 @@ namespace PostingNews.Models
             }
             return null;
             //throw new NotImplementedException();
+        }
+
+        public void AddNewPost(Post post)
+        {
+            throw new NotImplementedException();
         }
     }
 }
