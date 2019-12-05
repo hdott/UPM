@@ -1,0 +1,15 @@
+Exercițiul 1
+• Să se implementeze un program în care:
+• Procesul părinte citește dintr-un fișier text (prin
+operatorul de redirectare/deschiderea fișierului din
+program).
+• Procesul părinte transmite către un proces fiu câte 10
+caractere/secundă prin intermediul unui pipe.
+• Procesul fiu selectează caracterele minusculă și le
+transmite printr-un al doilea pipe unui al doilea fiu.
+• Al doilea fiu numără vocalele și consoanele primite și
+crează o statistică, scriind într-un fișier numărul de
+vocale și consoane înregistrate pentru fiecare secundă.
+• Al doilea fiu transmite statistica și către procesul părinte
+printr-un al treilea pipe.
+• Părintele afișează datele primite pe ecran.
