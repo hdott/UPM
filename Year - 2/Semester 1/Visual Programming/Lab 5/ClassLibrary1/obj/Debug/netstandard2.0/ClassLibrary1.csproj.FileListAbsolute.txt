@@ -1,8 +1,0 @@
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\bin\Debug\netstandard2.0\ClassLibrary1.deps.json
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\bin\Debug\netstandard2.0\ClassLibrary1.dll
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\bin\Debug\netstandard2.0\ClassLibrary1.pdb
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\obj\Debug\netstandard2.0\ClassLibrary1.csprojAssemblyReference.cache
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\obj\Debug\netstandard2.0\ClassLibrary1.AssemblyInfoInputs.cache
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\obj\Debug\netstandard2.0\ClassLibrary1.AssemblyInfo.cs
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\obj\Debug\netstandard2.0\ClassLibrary1.dll
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\ClassLibrary1\obj\Debug\netstandard2.0\ClassLibrary1.pdb

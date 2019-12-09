@@ -111,6 +111,7 @@ namespace WindowsFormsApp1
         {
             //DataTable dt = connect.GetAllUsers();
             dt.Columns.RemoveAt(0);
+            dt.Columns.RemoveAt(4);
             dataGridView1.DataSource = dt;
             //foreach(SQLiteHandler.User user in list)
             //{
@@ -154,7 +155,12 @@ namespace WindowsFormsApp1
             }
             if (cnpTB.Text.Length == 0)
             {
-                stat += "CNP";
+                stat += "CNP,";
+                suntDate = false;
+            }
+            if (pwdTB.Text.Length == 0)
+            {
+                stat += "Password";
                 suntDate = false;
             }
 
@@ -167,7 +173,7 @@ namespace WindowsFormsApp1
             else
             {
                 if(connect.InsertUser(numeTB.Text, prenumeTB.Text, adresaTB.Text,
-                                    cnpTB.Text))
+                                    cnpTB.Text, pwdTB.Text.GetHashCode()))
                 {
                     statusL.Text = "User Adaugat!";
                     statusL.ForeColor = Color.Green;
@@ -263,7 +269,80 @@ namespace WindowsFormsApp1
 
         private void cautaCNPB_Click(object sender, EventArgs e)
         {
+            if (connect == null)
+            {
+                statusL.ForeColor = Color.Red;
+                statusL.Text = "Nu exista conexiune DB!";
+                statusL.Visible = true;
 
+                t = new System.Timers.Timer(2000);
+                t.Elapsed += OnTimedEvent;
+                t.Enabled = true;
+                return;
+            }
+            else
+            {
+                populateGrid(connect.ExistsUser(cnpTB.Text.ToString()));
+            }
+        }
+
+        private void cautaNPB_Click(object sender, EventArgs e)
+        {
+            if (connect == null)
+            {
+                statusL.ForeColor = Color.Red;
+                statusL.Text = "Nu exista conexiune DB!";
+                statusL.Visible = true;
+
+                t = new System.Timers.Timer(2000);
+                t.Elapsed += OnTimedEvent;
+                t.Enabled = true;
+                return;
+            }
+            else
+            {
+                populateGrid(connect.ExistsUser(numeTB.Text, prenumeTB.Text));
+            }
+        }
+
+        private void authBTN_Click(object sender, EventArgs e)
+        {
+            if (connect == null)
+            {
+                statusL.ForeColor = Color.Red;
+                statusL.Text = "Nu exista conexiune DB!";
+                statusL.Visible = true;
+
+                t = new System.Timers.Timer(2000);
+                t.Elapsed += OnTimedEvent;
+                t.Enabled = true;
+                return;
+            }
+            else
+            {
+                if(connect.AuthenticateUser(numeTB.Text, pwdTB.Text.GetHashCode()))
+                {
+                    statusL.Text = "Autentificat!";
+                    statusL.ForeColor = Color.Green;
+                    statusL.Visible = true;
+
+                    t = new System.Timers.Timer(4000);
+                    t.Elapsed += OnTimedEvent;
+                    t.Enabled = true;
+                }
+                else
+                {
+
+                    statusL.ForeColor = Color.Red;
+                    statusL.Text = "NeAutentificat!";
+                    statusL.Visible = true;
+
+                    t = new System.Timers.Timer(2000);
+                    t.Elapsed += OnTimedEvent;
+                    t.Enabled = true;
+                    return;
+                }
+            }
         }
     }
 }

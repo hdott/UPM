@@ -45,6 +45,9 @@
             this.cautaNPB = new System.Windows.Forms.Button();
             this.getallB = new System.Windows.Forms.Button();
             this.statusL = new System.Windows.Forms.Label();
+            this.pwdTB = new System.Windows.Forms.TextBox();
+            this.pwdL = new System.Windows.Forms.Label();
+            this.authBTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +117,7 @@
             // 
             // insertB
             // 
-            this.insertB.Location = new System.Drawing.Point(5, 146);
+            this.insertB.Location = new System.Drawing.Point(5, 180);
             this.insertB.Name = "insertB";
             this.insertB.Size = new System.Drawing.Size(75, 23);
             this.insertB.TabIndex = 8;
@@ -132,7 +135,7 @@
             // 
             // connectB
             // 
-            this.connectB.Location = new System.Drawing.Point(5, 87);
+            this.connectB.Location = new System.Drawing.Point(5, 121);
             this.connectB.Name = "connectB";
             this.connectB.Size = new System.Drawing.Size(75, 23);
             this.connectB.TabIndex = 10;
@@ -142,7 +145,7 @@
             // 
             // disconnectB
             // 
-            this.disconnectB.Location = new System.Drawing.Point(5, 117);
+            this.disconnectB.Location = new System.Drawing.Point(5, 151);
             this.disconnectB.Name = "disconnectB";
             this.disconnectB.Size = new System.Drawing.Size(75, 23);
             this.disconnectB.TabIndex = 11;
@@ -152,7 +155,7 @@
             // 
             // deleteB
             // 
-            this.deleteB.Location = new System.Drawing.Point(5, 176);
+            this.deleteB.Location = new System.Drawing.Point(5, 210);
             this.deleteB.Name = "deleteB";
             this.deleteB.Size = new System.Drawing.Size(75, 23);
             this.deleteB.TabIndex = 12;
@@ -162,7 +165,7 @@
             // 
             // cautaCNPB
             // 
-            this.cautaCNPB.Location = new System.Drawing.Point(5, 206);
+            this.cautaCNPB.Location = new System.Drawing.Point(5, 240);
             this.cautaCNPB.Name = "cautaCNPB";
             this.cautaCNPB.Size = new System.Drawing.Size(152, 23);
             this.cautaCNPB.TabIndex = 13;
@@ -172,16 +175,17 @@
             // 
             // cautaNPB
             // 
-            this.cautaNPB.Location = new System.Drawing.Point(5, 236);
+            this.cautaNPB.Location = new System.Drawing.Point(5, 270);
             this.cautaNPB.Name = "cautaNPB";
             this.cautaNPB.Size = new System.Drawing.Size(152, 23);
             this.cautaNPB.TabIndex = 14;
             this.cautaNPB.Text = "Cauta dupa Nume, Prenume";
             this.cautaNPB.UseVisualStyleBackColor = true;
+            this.cautaNPB.Click += new System.EventHandler(this.cautaNPB_Click);
             // 
             // getallB
             // 
-            this.getallB.Location = new System.Drawing.Point(5, 266);
+            this.getallB.Location = new System.Drawing.Point(5, 300);
             this.getallB.Name = "getallB";
             this.getallB.Size = new System.Drawing.Size(152, 23);
             this.getallB.TabIndex = 15;
@@ -192,18 +196,48 @@
             // statusL
             // 
             this.statusL.AutoSize = true;
-            this.statusL.Location = new System.Drawing.Point(5, 296);
+            this.statusL.Location = new System.Drawing.Point(2, 365);
             this.statusL.Name = "statusL";
             this.statusL.Size = new System.Drawing.Size(35, 13);
             this.statusL.TabIndex = 16;
             this.statusL.Text = "label5";
             this.statusL.Visible = false;
             // 
+            // pwdTB
+            // 
+            this.pwdTB.Location = new System.Drawing.Point(57, 78);
+            this.pwdTB.Name = "pwdTB";
+            this.pwdTB.Size = new System.Drawing.Size(100, 20);
+            this.pwdTB.TabIndex = 17;
+            this.pwdTB.UseSystemPasswordChar = true;
+            // 
+            // pwdL
+            // 
+            this.pwdL.AutoSize = true;
+            this.pwdL.Location = new System.Drawing.Point(2, 81);
+            this.pwdL.Name = "pwdL";
+            this.pwdL.Size = new System.Drawing.Size(53, 13);
+            this.pwdL.TabIndex = 18;
+            this.pwdL.Text = "Password";
+            // 
+            // authBTN
+            // 
+            this.authBTN.Location = new System.Drawing.Point(5, 329);
+            this.authBTN.Name = "authBTN";
+            this.authBTN.Size = new System.Drawing.Size(152, 23);
+            this.authBTN.TabIndex = 19;
+            this.authBTN.Text = "Authenticate User";
+            this.authBTN.UseVisualStyleBackColor = true;
+            this.authBTN.Click += new System.EventHandler(this.authBTN_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.authBTN);
+            this.Controls.Add(this.pwdL);
+            this.Controls.Add(this.pwdTB);
             this.Controls.Add(this.statusL);
             this.Controls.Add(this.getallB);
             this.Controls.Add(this.cautaNPB);
@@ -248,6 +282,9 @@
         private System.Windows.Forms.Button cautaNPB;
         private System.Windows.Forms.Button getallB;
         private System.Windows.Forms.Label statusL;
+        private System.Windows.Forms.TextBox pwdTB;
+        private System.Windows.Forms.Label pwdL;
+        private System.Windows.Forms.Button authBTN;
     }
 }
 
