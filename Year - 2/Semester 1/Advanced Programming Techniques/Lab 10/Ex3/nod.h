@@ -1,5 +1,6 @@
 #pragma once
 #include "listaD.h"
+#include "iterator_bi.h"
 
 
 template<class T>
@@ -9,9 +10,8 @@ class Nod{
         Nod *next;
         T value;
     public:
-        friend class ListaD,
-                    iterator_fw,
-                    iterator_rw;
+        friend class ListaD;
+        friend class iterator_bi;
 
         Nod() = default;
         Nod(T value, Nod *prev, Nod *next = nullptr) : value(value), prev(prev), 
