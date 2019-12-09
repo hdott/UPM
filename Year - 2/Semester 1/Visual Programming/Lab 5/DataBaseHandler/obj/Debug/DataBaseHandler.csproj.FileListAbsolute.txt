@@ -1,9 +1,0 @@
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\DataBaseHandler\bin\Debug\DataBaseHandler.dll
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\DataBaseHandler\bin\Debug\DataBaseHandler.pdb
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\DataBaseHandler\bin\Debug\System.Data.SQLite.dll
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\DataBaseHandler\bin\Debug\System.Data.SQLite.xml
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\DataBaseHandler\bin\Debug\System.Data.SQLite.dll.config
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\DataBaseHandler\obj\Debug\DataBaseHandler.csprojAssemblyReference.cache
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\DataBaseHandler\obj\Debug\DataBaseHandler.csproj.CopyComplete
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\DataBaseHandler\obj\Debug\DataBaseHandler.dll
-C:\Users\nhori\Git\UPM\Year - 2\Semester 1\Visual Programming\Lab 5\DataBaseHandler\obj\Debug\DataBaseHandler.pdb
