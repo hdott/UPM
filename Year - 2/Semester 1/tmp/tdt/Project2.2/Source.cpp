@@ -3,16 +3,20 @@
 #include <iterator>
 #include <vector>
 
-template <typename T, class OutputIterator>
-void product(T a1, T a2, T b1, T b2, OutputIterator result);
+template <typename T, class OutputIterator> void product(T a1, T a2, T b1, T b2, OutputIterator result);
 
 int main(void) {
 	using namespace std;
 
 	vector<int> A{ 1,2,3,4,5 };
 	vector<int> B{ 1,2,3,4,5,6 };
-	vector<int> C(10);
-	auto x = A.begin()++;
+	vector<int> C;
+
+	for (auto x = A.begin(); x != A.end(); ++x) {
+		cout << *x << " ";
+	}
+	cout << endl;
+
 	product(A.begin(), A.end(), B.begin(), B.end(), back_inserter(C));
 
 	for (auto& x : C) {
@@ -28,7 +32,7 @@ template <typename T, class OutputIterator>
 void product(T a1, T a2, T b1, T b2, OutputIterator result) {
 
 	while (a1 != a2 || b1 != b2) {
-		*result = *a1 * *b1;
+		*result = (*a1) * (*b1);
 		++a1;
 		++b1;
 		++result;
