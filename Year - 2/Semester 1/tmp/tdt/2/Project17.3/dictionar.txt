@@ -1,0 +1,4 @@
+caine: dog puppy whelp
+pisica: kitten cat
+soarece: mouse
+animal: animal beast brute predator
